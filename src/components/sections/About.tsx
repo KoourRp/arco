@@ -31,11 +31,6 @@ export default function About() {
                 alt="Equipo AR|CO trabajando"
                 className="w-full h-full object-cover"
               />
-              {/* Overlay badge */}
-              <div className="absolute bottom-6 right-6 bg-white dark:bg-gray-900 rounded-2xl p-4 shadow-xl">
-                <div className="text-3xl font-black text-magenta">10+</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400 font-medium">años de trayectoria</div>
-              </div>
             </div>
             {/* Color accent */}
             <div className="absolute -bottom-4 -left-4 w-32 h-32 rounded-2xl bg-celeste/20 dark:bg-celeste/10 -z-10" />
