@@ -43,7 +43,7 @@ export default function Header() {
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="grid grid-cols-3 items-center h-16 md:h-20">
           {/* Logo */}
           <a
             href="#inicio"
@@ -58,7 +58,7 @@ export default function Header() {
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center justify-center gap-8">
             {navLinks.map(link => (
               <a
                 key={link.href}
@@ -72,7 +72,7 @@ export default function Header() {
           </nav>
 
           {/* Right actions */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center justify-end gap-3">
             <button
               onClick={toggleTheme}
               aria-label="Cambiar tema"
