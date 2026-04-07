@@ -29,7 +29,7 @@ export default function About() {
             <div className="relative rounded-2xl overflow-hidden aspect-[4/5]">
               <img
                 src={portfolioImg}
-                alt="Equipo AR|CO trabajando"
+                alt="Equipo ARCO trabajando"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -51,13 +51,13 @@ export default function About() {
             </span>
             <h2 className="text-4xl sm:text-5xl font-black text-gray-900 dark:text-white leading-tight mb-6">
               Arquitectura que{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-celeste to-magenta">
+              <span className="text-gradient-anim">
                 desafía
               </span>{' '}
               lo convencional
             </h2>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 text-lg">
-              AR|CO es un laboratorio de arquitectura fundado en Santiago con el objetivo de hacer el
+              ARCO es un laboratorio de arquitectura fundado en Santiago con el objetivo de hacer el
               buen diseño accesible. Combinamos rigor técnico con exploración creativa para generar
               espacios que conectan con las personas.
             </p>
@@ -76,7 +76,7 @@ export default function About() {
             </ul>
 
             <a
-              href={`https://wa.me/56935607782?text=${encodeURIComponent('Hola, quiero agendar una asesoría con AR|CO')}`}
+              href={`https://wa.me/56935607782?text=${encodeURIComponent('Hola, quiero agendar una asesoría con ARCO')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-border-anim inline-flex items-center gap-2 bg-magenta text-white font-semibold px-7 py-3.5 rounded-full hover:bg-magenta/85 transition-all shadow hover:shadow-magenta/30 hover:shadow-lg"

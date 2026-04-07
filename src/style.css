@@ -51,6 +51,26 @@
   animation: border-spin 1.8s linear infinite;
 }
 
+/* Animated gradient text */
+@keyframes gradient-flow {
+  0%   { background-position: 100% center; }
+  100% { background-position: 0% center; }
+}
+
+.text-gradient-anim {
+  background: linear-gradient(
+    to right,
+    #83cfef, #ffdc5b, #e73978,
+    #83cfef, #ffdc5b, #e73978,
+    #83cfef
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-flow 5s linear infinite;
+}
+
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }

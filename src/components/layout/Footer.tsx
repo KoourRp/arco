@@ -8,31 +8,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <img src={arcoLogo} alt="AR|CO Laboratorio de Arquitectura" className="h-10 w-auto object-contain mb-4" />
+            <img src={arcoLogo} alt="ARCO Laboratorio de Arquitectura" className="h-10 w-auto object-contain mb-4" />
             <p className="text-sm text-gray-400 leading-relaxed mb-6">
               Laboratorio de Arquitectura. Diseño disruptivo, innovador y accesible para transformar
               los espacios en que vivimos.
             </p>
-            <div className="flex items-center gap-3">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-border-anim w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-magenta transition-colors"
-                aria-label="Instagram"
-              >
-                <Share2 size={16} />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-border-anim w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-celeste transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Globe size={16} />
-              </a>
-            </div>
           </div>
 
           {/* Links */}
@@ -110,7 +90,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-          <span>© {new Date().getFullYear()} AR|CO Laboratorio de Arquitectura. Todos los derechos reservados.</span>
+          <span>© {new Date().getFullYear()} ARCO Laboratorio de Arquitectura. Todos los derechos reservados.</span>
           <span>Santiago, Chile</span>
         </div>
       </div>

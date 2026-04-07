@@ -52,7 +52,7 @@ export default function Header() {
           >
             <img
               src={theme === 'dark' ? arcoLogoBlack : arcoLogoWhite}
-              alt="AR|CO Laboratorio de Arquitectura"
+              alt="ARCO Laboratorio de Arquitectura"
               className="h-10 md:h-12 w-auto object-contain"
             />
           </a>
@@ -121,7 +121,7 @@ export default function Header() {
             </a>
           ))}
           <a
-            href={`https://wa.me/56935607782?text=${encodeURIComponent('Hola, quiero agendar una asesoría con AR|CO')}`}
+            href={`https://wa.me/56935607782?text=${encodeURIComponent('Hola, quiero agendar una asesoría con ARCO')}`}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-border-anim inline-flex items-center justify-center gap-2 bg-magenta text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-magenta/85 transition-all mt-2"

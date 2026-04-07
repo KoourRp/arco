@@ -122,7 +122,7 @@ export default function Contact() {
             {/* Embedded map */}
             <div className="rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-800 h-72">
               <iframe
-                title="Ubicación AR|CO"
+                title="Ubicación ARCO"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.0786890305!2d-70.61808082400783!3d-33.43317739874143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf5f5898e4c7%3A0x9a5c7f5c5a5c5a5c!2sLa+Concepci%C3%B3n+141%2C+Providencia%2C+Regi%C3%B3n+Metropolitana!5e0!3m2!1ses!2scl!4v1700000000000"
                 width="100%"
                 height="100%"

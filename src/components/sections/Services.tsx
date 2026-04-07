@@ -22,7 +22,7 @@ function ServiceCard({ service, index }: { service: (typeof services)[number]; i
       ref={ref as React.RefObject<HTMLDivElement>}
       style={{ transitionDelay: `${index * 80}ms` }}
       className={cn(
-        'group p-8 rounded-2xl border border-gray-100 dark:border-gray-800',
+        'btn-border-anim group p-8 rounded-2xl border border-gray-300 dark:border-gray-800',
         'bg-white dark:bg-gray-900',
         'hover:border-celeste dark:hover:border-celeste',
         'hover:shadow-xl hover:shadow-celeste/10 dark:hover:shadow-celeste/5',

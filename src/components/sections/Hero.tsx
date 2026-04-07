@@ -15,7 +15,7 @@ export default function Hero() {
       <div className="absolute inset-0">
         <img
           src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1800&q=85"
-          alt="Arquitectura AR|CO"
+          alt="Arquitectura ARCO"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gray-950/65 dark:bg-gray-950/75" />
@@ -38,7 +38,7 @@ export default function Hero() {
 
         <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black tracking-tight leading-none mb-6">
           <span className="block">Espacios que</span>
-          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-celeste via-amarillo to-magenta">
+          <span className="block text-gradient-anim">
             transforman
           </span>
           <span className="block">vidas</span>
@@ -52,7 +52,7 @@ export default function Hero() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button
             as="a"
-            href={`https://wa.me/56935607782?text=${encodeURIComponent('Hola, quiero agendar una asesoría con AR|CO')}`}
+            href={`https://wa.me/56935607782?text=${encodeURIComponent('Hola, quiero agendar una asesoría con ARCO')}`}
             size="lg"
           >
             Agenda tu asesoría 👉
