@@ -1,6 +1,7 @@
 import { useScrollAnimation } from '../../hooks/useScrollAnimation'
 import { cn } from '../../lib/utils'
 import { CheckCircle } from 'lucide-react'
+import portfolioImg from '../../assets/img/portfolio.png'
 
 const values = [
   'Diseño centrado en las personas',
@@ -27,7 +28,7 @@ export default function About() {
           >
             <div className="relative rounded-2xl overflow-hidden aspect-[4/5]">
               <img
-                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900&q=80"
+                src={portfolioImg}
                 alt="Equipo AR|CO trabajando"
                 className="w-full h-full object-cover"
               />
