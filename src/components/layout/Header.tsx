@@ -46,14 +46,13 @@ export default function Header() {
           <a
             href="#inicio"
             onClick={e => handleNavClick(e, '#inicio')}
-            className="flex items-center gap-1 font-black text-xl tracking-tight select-none"
+            className="select-none"
           >
-            <span className="text-gray-900 dark:text-white">AR</span>
-            <span className="text-magenta">|</span>
-            <span className="text-gray-900 dark:text-white">CO</span>
-            <span className="ml-2 text-xs font-medium text-gray-500 dark:text-gray-400 hidden sm:block tracking-widest uppercase">
-              Arquitectura
-            </span>
+            <img
+              src="/src/assets/img/arcoheader.png"
+              alt="AR|CO Laboratorio de Arquitectura"
+              className="h-10 md:h-12 w-auto object-contain"
+            />
           </a>
 
           {/* Desktop nav */}
