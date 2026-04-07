@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Moon, Sun, Menu, X } from 'lucide-react'
 import { useTheme } from '../../contexts/ThemeContext'
 import { cn } from '../../lib/utils'
+import arcoLogo from '../../assets/img/arcoheader.png'
 
 const navLinks = [
   { label: 'Inicio', href: '#inicio' },
@@ -49,7 +50,7 @@ export default function Header() {
             className="select-none"
           >
             <img
-              src="/src/assets/img/arcoheader.png"
+              src={arcoLogo}
               alt="AR|CO Laboratorio de Arquitectura"
               className="h-10 md:h-12 w-auto object-contain"
             />
