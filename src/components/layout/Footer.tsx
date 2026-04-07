@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail, Clock, Share2, Globe } from 'lucide-react'
+import arcoLogo from '../../assets/img/arcoheader_black.png'
 
 export default function Footer() {
   return (
@@ -7,11 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-1 font-black text-2xl text-white mb-4">
-              <span>AR</span>
-              <span className="text-magenta">|</span>
-              <span>CO</span>
-            </div>
+            <img src={arcoLogo} alt="AR|CO Laboratorio de Arquitectura" className="h-10 w-auto object-contain mb-4" />
             <p className="text-sm text-gray-400 leading-relaxed mb-6">
               Laboratorio de Arquitectura. Diseño disruptivo, innovador y accesible para transformar
               los espacios en que vivimos.

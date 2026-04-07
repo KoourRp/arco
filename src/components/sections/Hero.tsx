@@ -67,19 +67,6 @@ export default function Hero() {
           </Button>
         </div>
 
-        {/* Stats */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16 mt-20 pt-10 border-t border-white/10">
-          {[
-            { value: '+80', label: 'Proyectos' },
-            { value: '10+', label: 'Años de experiencia' },
-            { value: '100%', label: 'Satisfacción' },
-          ].map(stat => (
-            <div key={stat.label} className="text-center">
-              <div className="text-4xl font-black text-celeste">{stat.value}</div>
-              <div className="text-sm text-gray-400 mt-1">{stat.label}</div>
-            </div>
-          ))}
-        </div>
       </div>
 
       {/* Scroll cue */}
