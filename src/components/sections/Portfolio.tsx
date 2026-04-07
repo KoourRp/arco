@@ -19,12 +19,12 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
       ref={ref as React.RefObject<HTMLDivElement>}
       style={{ transitionDelay: `${index * 100}ms` }}
       className={cn(
-        'group rounded-2xl overflow-hidden bg-white dark:bg-gray-900',
+        'btn-border-anim group rounded-2xl bg-white dark:bg-gray-900',
         'shadow-sm hover:shadow-xl transition-all duration-500',
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10',
       )}
     >
-      <div className="relative overflow-hidden aspect-[4/3]">
+      <div className="relative overflow-hidden aspect-[4/3] rounded-t-2xl">
         <img
           src={project.image}
           alt={project.title}
