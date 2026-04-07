@@ -78,7 +78,7 @@ export default function About() {
               href={`https://wa.me/56935607782?text=${encodeURIComponent('Hola, quiero agendar una asesoría con AR|CO')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-magenta text-white font-semibold px-7 py-3.5 rounded-full hover:bg-magenta/85 transition-all shadow hover:shadow-magenta/30 hover:shadow-lg"
+              className="btn-border-anim inline-flex items-center gap-2 bg-magenta text-white font-semibold px-7 py-3.5 rounded-full hover:bg-magenta/85 transition-all shadow hover:shadow-magenta/30 hover:shadow-lg"
             >
               Agenda tu asesoría 👉
             </a>

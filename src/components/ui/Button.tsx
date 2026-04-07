@@ -38,7 +38,7 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const classes = cn(
-    'inline-flex items-center justify-center gap-2 rounded-full font-semibold',
+    'btn-border-anim inline-flex items-center justify-center gap-2 rounded-full font-semibold',
     'transition-all duration-300 cursor-pointer select-none',
     'focus:outline-none focus-visible:ring-2 focus-visible:ring-magenta focus-visible:ring-offset-2',
     variantClasses[variant],

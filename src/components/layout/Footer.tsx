@@ -18,7 +18,7 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-magenta transition-colors"
+                className="btn-border-anim w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-magenta transition-colors"
                 aria-label="Instagram"
               >
                 <Share2 size={16} />
@@ -27,7 +27,7 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-celeste transition-colors"
+                className="btn-border-anim w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-celeste transition-colors"
                 aria-label="LinkedIn"
               >
                 <Globe size={16} />

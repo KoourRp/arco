@@ -85,7 +85,7 @@ export default function Header() {
               href={`https://wa.me/56935607782?text=${encodeURIComponent('Hola, quiero agendar una asesoría con ARCO')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-2 bg-magenta text-white text-sm font-semibold px-5 py-2 rounded-full hover:bg-magenta/85 transition-all shadow hover:shadow-magenta/30 hover:shadow-md"
+              className="btn-border-anim hidden sm:inline-flex items-center gap-2 bg-magenta text-white text-sm font-semibold px-5 py-2 rounded-full hover:bg-magenta/85 transition-all shadow hover:shadow-magenta/30 hover:shadow-md"
             >
               Agenda tu asesoría 👉
             </a>
@@ -124,7 +124,7 @@ export default function Header() {
             href={`https://wa.me/56935607782?text=${encodeURIComponent('Hola, quiero agendar una asesoría con AR|CO')}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-magenta text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-magenta/85 transition-all mt-2"
+            className="btn-border-anim inline-flex items-center justify-center gap-2 bg-magenta text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-magenta/85 transition-all mt-2"
           >
             Agenda tu asesoría 👉
           </a>

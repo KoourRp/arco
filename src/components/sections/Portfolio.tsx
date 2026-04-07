@@ -90,7 +90,7 @@ export default function Portfolio() {
               key={f.value}
               onClick={() => setActiveFilter(f.value)}
               className={cn(
-                'px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300',
+                'btn-border-anim px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300',
                 activeFilter === f.value
                   ? 'bg-magenta text-white shadow-md shadow-magenta/30'
                   : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700',
