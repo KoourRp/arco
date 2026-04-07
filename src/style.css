@@ -48,7 +48,7 @@
 
 .btn-border-anim:hover::before {
   opacity: 1;
-  animation: border-spin 1.8s linear infinite;
+  animation: border-spin 3.8s linear infinite;
 }
 
 /* Animated gradient text */
