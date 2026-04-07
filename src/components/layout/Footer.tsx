@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Clock, Share2, Globe } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import arcoLogo from '../../assets/img/arcoheader_black.png'
 
 export default function Footer() {
