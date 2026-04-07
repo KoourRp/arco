@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { Moon, Sun, Menu, X } from 'lucide-react'
 import { useTheme } from '../../contexts/ThemeContext'
 import { cn } from '../../lib/utils'
-import arcoLogo from '../../assets/img/arcoheader.png'
+import arcoLogoBlack from '../../assets/img/arcoheader_black.png'
+import arcoLogoWhite from '../../assets/img/arcoheader_white.png'
 
 const navLinks = [
   { label: 'Inicio', href: '#inicio' },
@@ -50,7 +51,7 @@ export default function Header() {
             className="select-none"
           >
             <img
-              src={arcoLogo}
+              src={theme === 'dark' ? arcoLogoBlack : arcoLogoWhite}
               alt="AR|CO Laboratorio de Arquitectura"
               className="h-10 md:h-12 w-auto object-contain"
             />
@@ -81,7 +82,7 @@ export default function Header() {
             </button>
 
             <a
-              href={`https://wa.me/56935607782?text=${encodeURIComponent('Hola, quiero agendar una asesoría con AR|CO')}`}
+              href={`https://wa.me/56935607782?text=${encodeURIComponent('Hola, quiero agendar una asesoría con ARCO')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden sm:inline-flex items-center gap-2 bg-magenta text-white text-sm font-semibold px-5 py-2 rounded-full hover:bg-magenta/85 transition-all shadow hover:shadow-magenta/30 hover:shadow-md"
