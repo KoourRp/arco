@@ -61,11 +61,14 @@ function ArcoLetter({
 }) {
   const [hovered, setHovered] = useState(false)
   const { theme } = useTheme()
-  const lit    = isActive || hovered
-  const color  = value === 'arquitectura' && theme === 'light'
-    ? '#18181b'               // zinc-900 — visible sobre fondo blanco
+  const lit      = isActive || hovered
+  const color    = value === 'arquitectura' && theme === 'light'
+    ? '#18181b'
     : CATEGORY_COLOR[value]
-  const imgSrc = letterImages[letter.toLowerCase()][theme]
+
+  // Siempre usamos la versión blanca como máscara de luminancia:
+  // píxeles blancos (letra) → muestran el color; píxeles negros (fondo) → ocultan
+  const maskSrc = letterImages[letter.toLowerCase()].dark
 
   return (
     <button
@@ -75,15 +78,24 @@ function ArcoLetter({
       className="group flex flex-col items-center gap-2 focus:outline-none"
       aria-pressed={isActive}
     >
-      {/* Imagen de la letra */}
-      <img
-        src={imgSrc}
-        alt={`letra ${letter.toUpperCase()}`}
-        style={{ mixBlendMode: theme === 'dark' ? 'screen' : 'multiply' }}
+      {/* Letra enmascarada con color corporativo */}
+      <div
+        aria-label={`letra ${letter.toUpperCase()}`}
+        style={{
+          backgroundColor:    lit ? color : '#71717a',
+          WebkitMaskImage:    `url(${maskSrc})`,
+          WebkitMaskSize:     'contain',
+          WebkitMaskRepeat:   'no-repeat',
+          WebkitMaskPosition: 'center',
+          maskImage:          `url(${maskSrc})`,
+          maskSize:           'contain',
+          maskRepeat:         'no-repeat',
+          maskPosition:       'center',
+          maskMode:           'luminance',
+        } as React.CSSProperties}
         className={cn(
-          'w-20 h-20 object-contain transition-all duration-300 cursor-pointer select-none',
-          'opacity-40 group-hover:opacity-100',
-          isActive && 'opacity-100',
+          'w-20 h-20 cursor-pointer select-none transition-all duration-300',
+          lit ? 'opacity-100' : 'opacity-40 group-hover:opacity-100',
         )}
       />
 
