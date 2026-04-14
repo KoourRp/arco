@@ -13,29 +13,40 @@ const iconMap: Record<string, LucideIcon> = {
   Lightbulb,
 }
 
+const WA_NUMBER = '56935607782'
+
 function ServiceCard({ service, index }: { service: (typeof services)[number]; index: number }) {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 })
   const Icon = iconMap[service.icon] ?? Building2
+  const href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(service.whatsappText)}`
 
   return (
-    <div
-      ref={ref as React.RefObject<HTMLDivElement>}
+    <a
+      ref={ref as unknown as React.RefObject<HTMLAnchorElement>}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       style={{ transitionDelay: `${index * 80}ms` }}
       className={cn(
         'btn-border-anim group p-8 rounded-2xl border border-gray-300 dark:border-gray-800',
         'bg-white dark:bg-gray-900',
         'hover:border-celeste dark:hover:border-celeste',
         'hover:shadow-xl hover:shadow-celeste/10 dark:hover:shadow-celeste/5',
-        'transition-all duration-500',
+        'transition-all duration-500 block',
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8',
       )}
     >
-      <div className="w-12 h-12 rounded-xl bg-celeste/10 dark:bg-celeste/10 flex items-center justify-center mb-5 group-hover:bg-celeste/20 transition-colors">
-        <Icon size={22} className="text-celeste" />
+      <div className="flex items-start justify-between mb-5">
+        <div className="w-12 h-12 rounded-xl bg-celeste/10 flex items-center justify-center group-hover:bg-celeste/20 transition-colors">
+          <Icon size={22} className="text-celeste" />
+        </div>
+        <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs font-semibold text-celeste tracking-wide">
+          Consultar →
+        </span>
       </div>
       <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">{service.title}</h3>
       <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{service.description}</p>
-    </div>
+    </a>
   )
 }
 
