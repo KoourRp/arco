@@ -1,5 +1,12 @@
 import { useState } from 'react'
-import { projects, type Project, type ProjectCategory } from '../../data/projects'
+import {
+  projects,
+  type Project,
+  type ARCOLetter,
+  ARCO_COLORS,
+  ARCO_LABELS,
+  getProjectCode,
+} from '../../data/projects'
 import { useScrollAnimation } from '../../hooks/useScrollAnimation'
 import { useTheme } from '../../contexts/ThemeContext'
 import { cn } from '../../lib/utils'
@@ -22,57 +29,38 @@ const letterImages: Record<string, { light: string; dark: string }> = {
   o: { light: oBlack, dark: oWhite },
 }
 
-// ─── Colores por categoría ────────────────────────────────────────────────────
-// Usados tanto en el selector ARCO como en el código de cada card.
-// A=blanco (sobre fondo oscuro del selector), R=amarillo, C=magenta, O=celeste
+// ─── Selector ARCO ────────────────────────────────────────────────────────────
 
-const CATEGORY_COLOR: Record<Exclude<ProjectCategory, 'todos'>, string> = {
-  arquitectura:   '#ffffff',
-  regularizacion: '#ffdc5b',
-  interiorismo:   '#e73978',
-  patrimonio:     '#83cfef',
-}
-
-// ─── Selector ARCO ───────────────────────────────────────────────────────────
-
-const ARCO_LETTERS: {
-  letter: string
-  value: Exclude<ProjectCategory, 'todos'>
-  label: string
-}[] = [
-  { letter: 'A', value: 'arquitectura',   label: 'Arquitectura y Construcción' },
-  { letter: 'R', value: 'regularizacion', label: 'Gestión y Regularizaciones'  },
-  { letter: 'C', value: 'interiorismo',   label: 'Interiorismo y Diseño'       },
-  { letter: 'O', value: 'patrimonio',     label: 'Patrimonio y Restauración'   },
+const ARCO_LETTERS: { letter: ARCOLetter; label: string }[] = [
+  { letter: 'A', label: ARCO_LABELS.A },
+  { letter: 'R', label: ARCO_LABELS.R },
+  { letter: 'C', label: ARCO_LABELS.C },
+  { letter: 'O', label: ARCO_LABELS.O },
 ]
 
 function ArcoLetter({
   letter,
-  value,
   label,
   isActive,
   onSelect,
 }: {
-  letter: string
-  value: Exclude<ProjectCategory, 'todos'>
-  label: string
+  letter:   ARCOLetter
+  label:    string
   isActive: boolean
-  onSelect: (v: ProjectCategory) => void
+  onSelect: (l: ARCOLetter) => void
 }) {
   const [hovered, setHovered] = useState(false)
   const { theme } = useTheme()
-  const lit      = isActive || hovered
-  const color    = value === 'arquitectura' && theme === 'light'
+  const lit   = isActive || hovered
+  const color = letter === 'A' && theme === 'light'
     ? '#18181b'
-    : CATEGORY_COLOR[value]
+    : ARCO_COLORS[letter]
 
-  // Siempre usamos la versión blanca como máscara de luminancia:
-  // píxeles blancos (letra) → muestran el color; píxeles negros (fondo) → ocultan
   const maskSrc = letterImages[letter.toLowerCase()].dark
 
   return (
     <button
-      onClick={() => onSelect(value)}
+      onClick={() => onSelect(letter)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className="group flex flex-col items-center gap-2 focus:outline-none"
@@ -80,7 +68,7 @@ function ArcoLetter({
     >
       {/* Letra enmascarada con color corporativo */}
       <div
-        aria-label={`letra ${letter.toUpperCase()}`}
+        aria-label={`letra ${letter}`}
         style={{
           backgroundColor:    lit ? color : '#71717a',
           WebkitMaskImage:    `url(${maskSrc})`,
@@ -110,7 +98,7 @@ function ArcoLetter({
 
       {/* Label de categoría */}
       <span
-        style={{ color: color }}
+        style={{ color }}
         className={cn(
           'text-[10px] font-semibold tracking-widest uppercase text-center leading-tight max-w-[88px]',
           'transition-all duration-300',
@@ -126,33 +114,32 @@ function ArcoLetter({
 function ArcoSelector({
   active,
   onSelect,
+  onAll,
 }: {
-  active: ProjectCategory
-  onSelect: (v: ProjectCategory) => void
+  active:   ARCOLetter | null
+  onSelect: (l: ARCOLetter) => void
+  onAll:    () => void
 }) {
   return (
     <div className="rounded-2xl bg-white dark:bg-zinc-950 px-8 py-12 mb-16">
-      {/* Las 4 letras */}
       <div className="flex items-start justify-center gap-10 sm:gap-16 lg:gap-24">
-        {ARCO_LETTERS.map(({ letter, value, label }) => (
+        {ARCO_LETTERS.map(({ letter, label }) => (
           <ArcoLetter
-            key={value}
+            key={letter}
             letter={letter}
-            value={value}
             label={label}
-            isActive={active === value}
+            isActive={active === letter}
             onSelect={onSelect}
           />
         ))}
       </div>
 
-      {/* Botón "Todos" — discreto, separado */}
       <div className="flex justify-center mt-10">
         <button
-          onClick={() => onSelect('todos')}
+          onClick={onAll}
           className={cn(
             'text-sm font-medium tracking-wide transition-all duration-200',
-            active === 'todos'
+            active === null
               ? 'text-zinc-900 dark:text-white underline underline-offset-4'
               : 'text-zinc-400 dark:text-zinc-600 hover:text-zinc-600 dark:hover:text-zinc-400',
           )}
@@ -166,22 +153,33 @@ function ArcoSelector({
 
 // ─── Badge de origen ──────────────────────────────────────────────────────────
 
-function OriginBadge({ origin }: { origin: (typeof projects)[number]['origin'] }) {
-  if (origin === 'colaboracion') {
-    return (
-      <span className="absolute top-3 right-3 text-xs font-semibold px-3 py-1 rounded-full bg-magenta/20 text-magenta backdrop-blur-sm">
-        En colaboración
-      </span>
-    )
-  }
-  if (origin === 'academia') {
-    return (
-      <span className="absolute top-3 right-3 text-xs font-semibold px-3 py-1 rounded-full bg-amarillo/20 text-amarillo backdrop-blur-sm">
-        I+D
-      </span>
-    )
-  }
-  return null
+function OriginBadge({ origin }: { origin: Project['origin'] }) {
+  if (origin === 'ARCO') return null
+  return (
+    <span className="absolute top-3 right-3 text-xs font-semibold px-3 py-1 rounded-full bg-zinc-800/80 text-zinc-300 backdrop-blur-sm">
+      {origin === 'URK' ? 'En colaboración con URK' : 'En colaboración con UNARTE'}
+    </span>
+  )
+}
+
+// ─── Código con color(es) ARCO ────────────────────────────────────────────────
+
+function CardCode({ project }: { project: Project }) {
+  const colors = project.arcoTypes.map(l => ARCO_COLORS[l])
+  const style: React.CSSProperties =
+    colors.length === 1
+      ? { color: colors[0] }
+      : {
+          background:              `linear-gradient(90deg, ${colors.join(', ')})`,
+          WebkitBackgroundClip:    'text',
+          WebkitTextFillColor:     'transparent',
+          backgroundClip:          'text',
+        }
+  return (
+    <p style={style} className="font-mono text-xs tracking-widest mb-1">
+      {getProjectCode(project)}
+    </p>
+  )
 }
 
 // ─── Card de proyecto ─────────────────────────────────────────────────────────
@@ -191,12 +189,11 @@ function ProjectCard({
   index,
   onClick,
 }: {
-  project: (typeof projects)[number]
-  index: number
+  project: Project
+  index:   number
   onClick: () => void
 }) {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 })
-  const codeColor = CATEGORY_COLOR[project.category]
 
   return (
     <div
@@ -227,17 +224,8 @@ function ProjectCard({
 
         {/* Info en hover */}
         <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-400 ease-out">
-          <p
-            style={{ color: codeColor }}
-            className="font-mono text-xs tracking-widest mb-1"
-          >
-            {project.code}
-          </p>
-          {project.subcategory && (
-            <p className="text-xs text-zinc-300 mb-1.5 capitalize tracking-wide">
-              {project.subcategory}
-            </p>
-          )}
+          <CardCode project={project} />
+          <p className="text-xs text-zinc-400 mb-1 tracking-wide">{project.comuna}</p>
           <h3 className="font-bold text-white text-lg leading-snug mb-1">
             {project.name}
           </h3>
@@ -256,14 +244,13 @@ function ProjectCard({
 // ─── Sección principal ────────────────────────────────────────────────────────
 
 export default function Portfolio() {
-  const [activeFilter, setActiveFilter] = useState<ProjectCategory>('todos')
+  const [activeLetter, setActiveLetter]     = useState<ARCOLetter | null>(null)
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const { ref: headRef, isVisible: headVisible } = useScrollAnimation()
 
-  const filtered =
-    activeFilter === 'todos'
-      ? projects
-      : projects.filter(p => p.category === activeFilter)
+  const filtered = activeLetter
+    ? projects.filter(p => p.arcoTypes.includes(activeLetter))
+    : projects
 
   return (
     <section id="portfolio" className="py-24 lg:py-32 bg-white dark:bg-gray-950">
@@ -288,7 +275,11 @@ export default function Portfolio() {
         </div>
 
         {/* Selector ARCO */}
-        <ArcoSelector active={activeFilter} onSelect={setActiveFilter} />
+        <ArcoSelector
+          active={activeLetter}
+          onSelect={l => setActiveLetter(prev => prev === l ? null : l)}
+          onAll={() => setActiveLetter(null)}
+        />
 
         {/* Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -308,6 +299,7 @@ export default function Portfolio() {
         <ProjectModal
           project={selectedProject}
           projects={projects}
+          filterLetter={activeLetter}
           onClose={() => setSelectedProject(null)}
         />
       )}

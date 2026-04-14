@@ -1,77 +1,78 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { X, ChevronUp, ChevronDown } from 'lucide-react'
-import { type Project, type ProjectCategory } from '../../data/projects'
+import {
+  type Project,
+  type ARCOLetter,
+  ARCO_COLORS,
+  ARCO_LABELS,
+  getProjectCode,
+} from '../../data/projects'
 import { cn } from '../../lib/utils'
 
-// ─── Colores por categoría ────────────────────────────────────────────────────
+// ─── Código con color(es) ARCO ────────────────────────────────────────────────
 
-const CATEGORY_COLOR: Record<Exclude<Project['category'], never>, string> = {
-  arquitectura:   '#ffffff',
-  regularizacion: '#ffdc5b',
-  interiorismo:   '#e73978',
-  patrimonio:     '#83cfef',
-}
-
-const CATEGORY_LABEL: Record<ProjectCategory, string> = {
-  todos:          'Todos',
-  arquitectura:   'Arquitectura y Construcción',
-  regularizacion: 'Gestión y Regularizaciones',
-  interiorismo:   'Interiorismo y Diseño',
-  patrimonio:     'Patrimonio y Restauración',
-}
-
-const SUBCATEGORY_LABEL: Record<NonNullable<Project['subcategory']>, string> = {
-  residencial: 'Residencial',
-  comercial:   'Comercial',
-  publico:     'Público',
-  industrial:  'Industrial',
+function ARCOCode({ project }: { project: Project }) {
+  const colors = project.arcoTypes.map(l => ARCO_COLORS[l])
+  const style: React.CSSProperties =
+    colors.length === 1
+      ? { color: colors[0] }
+      : {
+          background:           `linear-gradient(90deg, ${colors.join(', ')})`,
+          WebkitBackgroundClip: 'text' as const,
+          WebkitTextFillColor:  'transparent' as const,
+          backgroundClip:       'text' as const,
+        }
+  return (
+    <span className="font-mono text-xs tracking-widest uppercase" style={style}>
+      {getProjectCode(project)}
+    </span>
+  )
 }
 
 // ─── Badge de origen ──────────────────────────────────────────────────────────
 
 function OriginBadge({ origin }: { origin: Project['origin'] }) {
-  if (origin === 'colaboracion') {
-    return (
-      <span className="inline-flex text-xs font-semibold px-3 py-1 rounded-full bg-magenta/20 text-magenta">
-        En colaboración
-      </span>
-    )
-  }
-  if (origin === 'academia') {
-    return (
-      <span className="inline-flex text-xs font-semibold px-3 py-1 rounded-full bg-amarillo/20 text-amarillo">
-        I+D
-      </span>
-    )
-  }
-  return null
+  if (origin === 'ARCO') return null
+  return (
+    <span className="inline-flex text-xs font-semibold px-3 py-1 rounded-full bg-zinc-800 text-zinc-300">
+      {origin === 'URK' ? 'En colaboración con URK' : 'En colaboración con UNARTE'}
+    </span>
+  )
 }
 
 // ─── Constantes ───────────────────────────────────────────────────────────────
 
-const MAX_DOTS      = 8
-const STACK_OFFSET  = 8   // px que "asoma" cada tarjeta anterior por encima
+const MAX_DOTS     = 8
+const STACK_OFFSET = 8   // px que "asoma" cada tarjeta anterior por encima
 
 // ─── Modal ────────────────────────────────────────────────────────────────────
 
 export default function ProjectModal({
   project,
   projects,
+  filterLetter,
   onClose,
 }: {
-  project:  Project
-  projects: Project[]
-  onClose:  () => void
+  project:      Project
+  projects:     Project[]
+  filterLetter: ARCOLetter | null
+  onClose:      () => void
 }) {
-  const categoryProjects = projects.filter(p => p.category === project.category)
-  const initialIndex     = Math.max(0, categoryProjects.findIndex(p => p.id === project.id))
+  // Proyectos de navegación según el filtro activo
+  const navProjects  = filterLetter
+    ? projects.filter(p => p.arcoTypes.includes(filterLetter))
+    : projects
+  const initialIndex = Math.max(0, navProjects.findIndex(p => p.id === project.id))
 
   const [currentIndex, setCurrentIndex] = useState(initialIndex)
   const scrollRef = useRef<HTMLDivElement>(null)
 
-  const totalCount = categoryProjects.length
+  const totalCount = navProjects.length
   const showNav    = totalCount > 1
-  const codeColor  = CATEGORY_COLOR[categoryProjects[currentIndex].category]
+
+  // Color del dot activo: primera letra del proyecto actual
+  const currentProject = navProjects[currentIndex]
+  const dotColor       = ARCO_COLORS[currentProject.arcoTypes[0]]
 
   // ── Scroll programático ───────────────────────────────────────────────────
 
@@ -95,7 +96,6 @@ export default function ProjectModal({
   useEffect(() => {
     const el = scrollRef.current
     if (el && initialIndex > 0) {
-      // Sin animación: posición directa al montar
       el.scrollTop = initialIndex * el.clientHeight
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -130,16 +130,10 @@ export default function ProjectModal({
   // ─────────────────────────────────────────────────────────────────────────
 
   return (
-    // Overlay
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/75 backdrop-blur-sm"
       onClick={onClose}
     >
-      {/*
-        Wrapper exterior: referencia para el botón X y los dots.
-        Necesita ser relativo y estar FUERA del overflow-hidden del modal
-        para que el botón no quede recortado.
-      */}
       <div
         className="relative w-full max-w-5xl animate-fade-in"
         style={{ height: '90vh' }}
@@ -188,7 +182,7 @@ export default function ProjectModal({
                   className="flex items-center justify-center w-5 h-5"
                 >
                   <span
-                    style={i === currentIndex ? { backgroundColor: codeColor } : undefined}
+                    style={i === currentIndex ? { backgroundColor: dotColor } : undefined}
                     className={cn(
                       'rounded-full transition-all duration-300',
                       i === currentIndex
@@ -215,35 +209,22 @@ export default function ProjectModal({
           </div>
         )}
 
-        {/*
-          ── Scroll track con snap ──
-          - overflow-y-scroll + scroll-snap-type: y mandatory
-          - Fondo zinc-950 para que el STACK_OFFSET entre tarjetas
-            muestre el fondo oscuro, dando sensación de profundidad
-          - scrollbarWidth: none oculta la barra nativa
-        */}
+        {/* ── Scroll track con snap ── */}
         <div
           ref={scrollRef}
           onScroll={handleScroll}
           className="h-full overflow-y-scroll rounded-3xl bg-zinc-950"
           style={{
-            scrollSnapType: 'y mandatory',
-            scrollbarWidth: 'none',
-            // Ocultar scrollbar en webkit
+            scrollSnapType:  'y mandatory',
+            scrollbarWidth:  'none',
             msOverflowStyle: 'none',
           } as React.CSSProperties}
         >
-          {categoryProjects.map((p, i) => {
-            const color = CATEGORY_COLOR[p.category]
+          {navProjects.map((p, i) => {
+            // Color primario para bullets (primera letra del proyecto)
+            const primaryColor = ARCO_COLORS[p.arcoTypes[0]]
 
             return (
-              /*
-                Wrapper de cada tarjeta.
-                paddingTop incremental → cada tarjeta "asoma" desde arriba,
-                dejando ver el fondo oscuro del track y creando el efecto stack.
-                h-full + scroll-snap-align: start → cada sección ocupa el viewport
-                y el snap se ancla al inicio del wrapper.
-              */
               <div
                 key={p.id}
                 style={{
@@ -253,10 +234,8 @@ export default function ProjectModal({
                   paddingTop:      `${i * STACK_OFFSET}px`,
                 }}
               >
-                {/* Tarjeta principal */}
-                <div
-                  className="relative h-full rounded-3xl shadow-2xl overflow-hidden bg-zinc-900 flex flex-col sm:flex-row"
-                >
+                <div className="relative h-full rounded-3xl shadow-2xl overflow-hidden bg-zinc-900 flex flex-col sm:flex-row">
+
                   {/* ── Columna izquierda: imagen (40%) ── */}
                   <div className="relative sm:w-2/5 h-52 sm:h-full overflow-hidden flex-shrink-0">
                     <img
@@ -264,20 +243,16 @@ export default function ProjectModal({
                       alt={p.name}
                       className="w-full h-full object-cover"
                     />
-                    {/* Gradiente de transición hacia la columna de contenido */}
                     <div className="absolute inset-0 bg-gradient-to-b sm:bg-gradient-to-r from-transparent via-transparent to-zinc-900/60" />
                   </div>
 
                   {/* ── Columna derecha: contenido (60%) ── */}
                   <div className="sm:w-3/5 flex flex-col justify-center p-8 sm:p-10 overflow-y-auto">
 
-                    {/* Code */}
-                    <p
-                      style={{ color }}
-                      className="font-mono text-xs tracking-widest mb-5"
-                    >
-                      {p.code}
-                    </p>
+                    {/* Código ARCO */}
+                    <div className="mb-5">
+                      <ARCOCode project={p} />
+                    </div>
 
                     {/* Nombre stacked */}
                     <div className="mb-6">
@@ -291,46 +266,52 @@ export default function ProjectModal({
                       ))}
                     </div>
 
-                    {/* Tags categoría + subcategoría */}
-                    <div className="flex flex-wrap gap-2 mb-5">
-                      <span
-                        style={{ color, borderColor: color }}
-                        className="text-xs font-semibold px-3 py-1 rounded-full border bg-transparent"
-                      >
-                        {CATEGORY_LABEL[p.category]}
-                      </span>
-                      {p.subcategory && (
-                        <span className="text-xs font-semibold px-3 py-1 rounded-full border border-zinc-600 text-zinc-400">
-                          {SUBCATEGORY_LABEL[p.subcategory]}
+                    {/* Chips de letras ARCO */}
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {p.arcoTypes.map(letter => (
+                        <span
+                          key={letter}
+                          className="px-3 py-1 rounded-full text-xs font-mono border"
+                          style={{
+                            color:       ARCO_COLORS[letter],
+                            borderColor: ARCO_COLORS[letter],
+                          }}
+                        >
+                          {ARCO_LABELS[letter]}
                         </span>
-                      )}
+                      ))}
                     </div>
+
+                    {/* Comuna */}
+                    <p className="text-xs text-zinc-500 uppercase tracking-widest mb-5">
+                      {p.comuna}
+                    </p>
 
                     {/* Descripción */}
                     <p className="text-base leading-relaxed text-zinc-300 mb-5 line-clamp-3">
                       {p.description}
                     </p>
 
-                    {/* Alcances */}
-                    {p.details && p.details.length > 0 && (
+                    {/* Tipos / alcances */}
+                    {p.tipos.length > 0 && (
                       <ul className="space-y-2 mb-5">
-                        {p.details.map((item, di) => (
+                        {p.tipos.map((tipo, ti) => (
                           <li
-                            key={di}
+                            key={ti}
                             className="flex items-start gap-2.5 text-sm text-zinc-400"
                           >
                             <span
-                              style={{ backgroundColor: color }}
+                              style={{ backgroundColor: primaryColor }}
                               className="mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full"
                             />
-                            {item}
+                            {tipo}
                           </li>
                         ))}
                       </ul>
                     )}
 
-                    {/* Badge de origen si aplica */}
-                    {p.origin !== 'propio' && <OriginBadge origin={p.origin} />}
+                    {/* Badge de origen si no es ARCO propio */}
+                    <OriginBadge origin={p.origin} />
 
                   </div>
                 </div>
