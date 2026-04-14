@@ -72,6 +72,16 @@
   animation: border-spin 3.8s linear infinite;
 }
 
+/* Color bar carousel animation — triggers after curtain rises */
+@keyframes color-carousel {
+  from { transform: translateX(-66.6667%); }
+  to   { transform: translateX(0); }
+}
+
+.color-bar-carousel {
+  animation: color-carousel 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 /* Scroll-to-top curtain animation */
 .curtain-overlay {
   position: fixed;

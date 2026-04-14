@@ -1,7 +1,11 @@
 import { ArrowDown } from 'lucide-react'
 import Button from '../ui/Button'
+import { useCurtain } from '../../contexts/CurtainContext'
+import { cn } from '../../lib/utils'
 
 export default function Hero() {
+  const { spinBar } = useCurtain()
+
   const scrollTo = (id: string) => {
     document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -24,10 +28,14 @@ export default function Hero() {
       </div>
 
       {/* Decorative color bar */}
-      <div className="absolute top-0 left-0 right-0 h-1 flex">
-        <div className="flex-1 bg-amarillo" />
-        <div className="flex-1 bg-magenta" />
-        <div className="flex-1 bg-celeste" />
+      <div className="absolute top-0 left-0 right-0 h-1 overflow-hidden">
+        <div className={cn('flex h-full w-[300%]', spinBar && 'color-bar-carousel')}>
+          {[0, 1, 2].flatMap(i => [
+            <div key={`${i}a`} className="flex-1 bg-amarillo" />,
+            <div key={`${i}m`} className="flex-1 bg-magenta" />,
+            <div key={`${i}c`} className="flex-1 bg-celeste" />,
+          ])}
+        </div>
       </div>
 
       {/* Content */}

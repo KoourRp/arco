@@ -5,12 +5,14 @@ type CurtainState = 'idle' | 'dropping' | 'rising'
 
 interface CurtainContextValue {
   triggerCurtain: () => void
+  spinBar: boolean
 }
 
 const CurtainContext = createContext<CurtainContextValue | null>(null)
 
 export function CurtainProvider({ children }: { children: React.ReactNode }) {
   const [curtain, setCurtain] = useState<CurtainState>('idle')
+  const [spinBar, setSpinBar] = useState(false)
 
   const triggerCurtain = useCallback(() => {
     if (curtain !== 'idle') return
@@ -18,12 +20,16 @@ export function CurtainProvider({ children }: { children: React.ReactNode }) {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'instant' })
       setCurtain('rising')
-      setTimeout(() => setCurtain('idle'), 650)
+      setTimeout(() => {
+        setCurtain('idle')
+        setSpinBar(true)
+        setTimeout(() => setSpinBar(false), 950) // slightly longer than animation
+      }, 650)
     }, 650)
   }, [curtain])
 
   return (
-    <CurtainContext.Provider value={{ triggerCurtain }}>
+    <CurtainContext.Provider value={{ triggerCurtain, spinBar }}>
       {children}
 
       {/* Curtain overlay */}
