@@ -6,6 +6,7 @@ import {
   ARCO_COLORS,
   ARCO_LABELS,
   getProjectCode,
+  getCodeStyle,
 } from '../../data/projects'
 import { useScrollAnimation } from '../../hooks/useScrollAnimation'
 import { useTheme } from '../../contexts/ThemeContext'
@@ -165,18 +166,8 @@ function OriginBadge({ origin }: { origin: Project['origin'] }) {
 // ─── Código con color(es) ARCO ────────────────────────────────────────────────
 
 function CardCode({ project }: { project: Project }) {
-  const colors = project.arcoTypes.map(l => ARCO_COLORS[l])
-  const style: React.CSSProperties =
-    colors.length === 1
-      ? { color: colors[0] }
-      : {
-          background:              `linear-gradient(90deg, ${colors.join(', ')})`,
-          WebkitBackgroundClip:    'text',
-          WebkitTextFillColor:     'transparent',
-          backgroundClip:          'text',
-        }
   return (
-    <p style={style} className="font-mono text-xs tracking-widest mb-1">
+    <p style={getCodeStyle(project.arcoTypes)} className="font-mono text-xs tracking-widest mb-1 uppercase">
       {getProjectCode(project)}
     </p>
   )

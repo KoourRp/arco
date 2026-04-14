@@ -10,10 +10,10 @@ export const ARCO_COLORS: Record<ARCOLetter, string> = {
 }
 
 export const ARCO_LABELS: Record<ARCOLetter, string> = {
-  A: 'Arquitectura y Construcción',
-  R: 'Gestión y Regularizaciones',
-  C: 'Interiorismo y Diseño',
-  O: 'Patrimonio y Restauración',
+  A: 'Asesoría Territorial & Acción Social',
+  R: 'Regeneración Urbana & Patrimonio',
+  C: 'Construcción, Comercio & Especialidades',
+  O: 'Objetos & Identidad Visual',
 }
 
 export const TIPOS_VALIDOS = [

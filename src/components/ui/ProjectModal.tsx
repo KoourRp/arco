@@ -6,24 +6,15 @@ import {
   ARCO_COLORS,
   ARCO_LABELS,
   getProjectCode,
+  getCodeStyle,
 } from '../../data/projects'
 import { cn } from '../../lib/utils'
 
 // ─── Código con color(es) ARCO ────────────────────────────────────────────────
 
 function ARCOCode({ project }: { project: Project }) {
-  const colors = project.arcoTypes.map(l => ARCO_COLORS[l])
-  const style: React.CSSProperties =
-    colors.length === 1
-      ? { color: colors[0] }
-      : {
-          background:           `linear-gradient(90deg, ${colors.join(', ')})`,
-          WebkitBackgroundClip: 'text' as const,
-          WebkitTextFillColor:  'transparent' as const,
-          backgroundClip:       'text' as const,
-        }
   return (
-    <span className="font-mono text-xs tracking-widest uppercase" style={style}>
+    <span className="font-mono text-xs tracking-widest uppercase" style={getCodeStyle(project.arcoTypes)}>
       {getProjectCode(project)}
     </span>
   )
@@ -221,9 +212,6 @@ export default function ProjectModal({
           } as React.CSSProperties}
         >
           {navProjects.map((p, i) => {
-            // Color primario para bullets (primera letra del proyecto)
-            const primaryColor = ARCO_COLORS[p.arcoTypes[0]]
-
             return (
               <div
                 key={p.id}
@@ -255,7 +243,7 @@ export default function ProjectModal({
                     </div>
 
                     {/* Nombre stacked */}
-                    <div className="mb-6">
+                    <div className="mb-1">
                       {p.name.split(' ').map((word, wi) => (
                         <p
                           key={wi}
@@ -265,6 +253,9 @@ export default function ProjectModal({
                         </p>
                       ))}
                     </div>
+
+                    {/* Comuna bajo el nombre */}
+                    <p className="text-sm text-zinc-400 mt-1 mb-5">{p.comuna}</p>
 
                     {/* Chips de letras ARCO */}
                     <div className="flex flex-wrap gap-2 mb-3">
@@ -282,33 +273,21 @@ export default function ProjectModal({
                       ))}
                     </div>
 
-                    {/* Comuna */}
-                    <p className="text-xs text-zinc-500 uppercase tracking-widest mb-5">
-                      {p.comuna}
-                    </p>
+                    {/* Tipos como hashtags */}
+                    {p.tipos.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mt-3 mb-5">
+                        {p.tipos.map(tipo => (
+                          <span key={tipo} className="text-xs text-white/60 font-mono">
+                            #{tipo}
+                          </span>
+                        ))}
+                      </div>
+                    )}
 
                     {/* Descripción */}
                     <p className="text-base leading-relaxed text-zinc-300 mb-5 line-clamp-3">
                       {p.description}
                     </p>
-
-                    {/* Tipos / alcances */}
-                    {p.tipos.length > 0 && (
-                      <ul className="space-y-2 mb-5">
-                        {p.tipos.map((tipo, ti) => (
-                          <li
-                            key={ti}
-                            className="flex items-start gap-2.5 text-sm text-zinc-400"
-                          >
-                            <span
-                              style={{ backgroundColor: primaryColor }}
-                              className="mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full"
-                            />
-                            {tipo}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
 
                     {/* Badge de origen si no es ARCO propio */}
                     <OriginBadge origin={p.origin} />
