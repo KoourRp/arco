@@ -51,6 +51,40 @@
   animation: border-spin 3.8s linear infinite;
 }
 
+/* Scroll-to-top curtain animation */
+.curtain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  display: flex;
+  flex-direction: row;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.curtain-overlay.curtain-dropping {
+  animation: curtain-drop 0.65s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  pointer-events: auto;
+}
+
+.curtain-overlay.curtain-rising {
+  animation: curtain-rise 0.65s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.curtain-band {
+  flex: 1;
+}
+
+@keyframes curtain-drop {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(0); }
+}
+
+@keyframes curtain-rise {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-100%); }
+}
+
 /* Animated gradient text */
 @keyframes gradient-flow {
   0%   { background-position: 100% center; }
