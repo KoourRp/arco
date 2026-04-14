@@ -38,6 +38,7 @@ export default function ScrollToTopButton() {
         onClick={handleClick}
         aria-label="Volver al inicio"
         className={cn(
+          'btn-border-anim-fixed',
           'fixed bottom-6 right-6 z-[9999]',
           'w-12 h-12 rounded-full',
           'bg-white dark:bg-gray-900',
