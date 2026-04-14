@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Moon, Sun, Menu, X } from 'lucide-react'
 import { useTheme } from '../../contexts/ThemeContext'
+import { useCurtain } from '../../contexts/CurtainContext'
 import { cn } from '../../lib/utils'
 import arcoLogoBlack from '../../assets/img/arcoheader_black.png'
 import arcoLogoWhite from '../../assets/img/arcoheader_white.png'
@@ -15,6 +16,7 @@ const navLinks = [
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme()
+  const { triggerCurtain } = useCurtain()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -47,8 +49,8 @@ export default function Header() {
           {/* Logo */}
           <a
             href="#inicio"
-            onClick={e => handleNavClick(e, '#inicio')}
-            className="select-none"
+            onClick={e => { e.preventDefault(); triggerCurtain() }}
+            className="select-none cursor-pointer"
           >
             <img
               src={theme === 'dark' ? arcoLogoBlack : arcoLogoWhite}

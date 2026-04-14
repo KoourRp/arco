@@ -38,7 +38,7 @@
   inset: -2px;
   border-radius: inherit;
   padding: 2px;
-  background: conic-gradient(from var(--ba), #83cfef, #ffdc5b, #e73978, #83cfef);
+  background: conic-gradient(from var(--ba), #ffdc5b, #83cfef, #e73978, #ffdc5b);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -58,7 +58,7 @@
   inset: -2px;
   border-radius: inherit;
   padding: 2px;
-  background: conic-gradient(from var(--ba), #83cfef, #ffdc5b, #e73978, #83cfef);
+  background: conic-gradient(from var(--ba), #ffdc5b, #83cfef, #e73978, #ffdc5b);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -115,9 +115,9 @@
 .text-gradient-anim {
   background: linear-gradient(
     to right,
-    #83cfef, #ffdc5b, #e73978,
-    #83cfef, #ffdc5b, #e73978,
-    #83cfef
+    #ffdc5b, #83cfef, #e73978,
+    #ffdc5b, #83cfef, #e73978,
+    #ffdc5b
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
