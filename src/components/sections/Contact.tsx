@@ -3,33 +3,62 @@ import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from 'lucide-react'
 import { useScrollAnimation } from '../../hooks/useScrollAnimation'
 import { cn } from '../../lib/utils'
 
-const WHATSAPP = '+56935607782'
-const EMAIL = 'contact@arco-lab.cl'
+const WHATSAPP = '56935607782'
+const EMAIL    = 'contact@arco-lab.cl'
+
+// ─── Ícono WhatsApp (SVG inline) ─────────────────────────────────────────────
+function WhatsAppIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  )
+}
 
 export default function Contact() {
   const { ref: headRef, isVisible: headVisible } = useScrollAnimation()
   const { ref: formRef, isVisible: formVisible } = useScrollAnimation()
   const { ref: infoRef, isVisible: infoVisible } = useScrollAnimation()
 
-  const [sent, setSent] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [sent, setSent]       = useState<'whatsapp' | 'email' | null>(null)
+  const [loading, setLoading] = useState<'whatsapp' | 'email' | null>(null)
   const formEl = useRef<HTMLFormElement>(null)
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const data = new FormData(formEl.current!)
-    const name = data.get('name') as string
-    const message = data.get('message') as string
-    const subject = data.get('subject') as string
+  const getFormData = () => {
+    const data    = new FormData(formEl.current!)
+    const name    = (data.get('name')    as string).trim()
+    const email   = (data.get('email')   as string).trim()
+    const subject = (data.get('subject') as string).trim()
+    const message = (data.get('message') as string).trim()
+    return { name, email, subject, message }
+  }
 
-    const text = encodeURIComponent(
-      `Hola, soy ${name}.\nAsunto: ${subject}\n${message}`,
-    )
-    setLoading(true)
+  const handleWhatsApp = (e: React.MouseEvent) => {
+    e.preventDefault()
+    if (!formEl.current?.reportValidity()) return
+    const { name, subject, message } = getFormData()
+    const text = encodeURIComponent(`Hola, soy ${name}.\nAsunto: ${subject}\n${message}`)
+    setLoading('whatsapp')
     setTimeout(() => {
-      setLoading(false)
-      setSent(true)
-      window.open(`https://wa.me/${WHATSAPP.replace(/\D/g, '')}?text=${text}`, '_blank')
+      setLoading(null)
+      setSent('whatsapp')
+      window.open(`https://wa.me/${WHATSAPP}?text=${text}`, '_blank')
+    }, 600)
+  }
+
+  const handleEmail = (e: React.MouseEvent) => {
+    e.preventDefault()
+    if (!formEl.current?.reportValidity()) return
+    const { name, email, subject, message } = getFormData()
+    const body = encodeURIComponent(
+      `Nombre: ${name}\nEmail: ${email}\n\n${message}`
+    )
+    const subjectEncoded = encodeURIComponent(`[ARCO] ${subject}`)
+    setLoading('email')
+    setTimeout(() => {
+      setLoading(null)
+      setSent('email')
+      window.open(`mailto:${EMAIL}?subject=${subjectEncoded}&body=${body}`, '_blank')
     }, 600)
   }
 
@@ -76,7 +105,7 @@ export default function Contact() {
                   icon: Phone,
                   label: 'WhatsApp',
                   value: '+56 9 3560 7782',
-                  href: `https://wa.me/56935607782`,
+                  href: `https://wa.me/${WHATSAPP}`,
                 },
                 {
                   icon: Mail,
@@ -148,17 +177,19 @@ export default function Contact() {
                   <CheckCircle size={56} className="text-celeste" />
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white">¡Mensaje enviado!</h3>
                   <p className="text-gray-500 dark:text-gray-400">
-                    Se abrió WhatsApp con tu mensaje. Te respondemos a la brevedad.
+                    {sent === 'whatsapp'
+                      ? 'Se abrió WhatsApp con tu mensaje. Te respondemos a la brevedad.'
+                      : 'Se abrió tu cliente de correo con el mensaje listo. Te respondemos a la brevedad.'}
                   </p>
                   <button
-                    onClick={() => setSent(false)}
+                    onClick={() => setSent(null)}
                     className="mt-4 text-sm text-magenta hover:underline"
                   >
                     Enviar otro mensaje
                   </button>
                 </div>
               ) : (
-                <form ref={formEl} onSubmit={handleSubmit} className="space-y-5">
+                <form ref={formEl} className="space-y-5" noValidate>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
                     Envíanos un mensaje
                   </h3>
@@ -223,25 +254,38 @@ export default function Contact() {
                     />
                   </div>
 
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="btn-border-anim w-full flex items-center justify-center gap-2 bg-magenta text-white font-semibold py-3.5 rounded-full hover:bg-magenta/85 transition-all shadow hover:shadow-magenta/30 hover:shadow-lg disabled:opacity-70"
-                  >
-                    {loading ? (
-                      <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
-                    ) : (
-                      <Send size={16} />
-                    )}
-                    {loading ? 'Enviando…' : 'Enviar por WhatsApp'}
-                  </button>
+                  {/* Botones de envío */}
+                  <div className="grid grid-cols-2 gap-3 pt-1">
+                    {/* WhatsApp */}
+                    <button
+                      type="button"
+                      onClick={handleWhatsApp}
+                      disabled={!!loading}
+                      className="btn-border-anim flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold py-3.5 rounded-full hover:bg-[#1ebe5c] transition-all shadow hover:shadow-[#25D366]/30 hover:shadow-lg disabled:opacity-70 text-sm"
+                    >
+                      {loading === 'whatsapp' ? (
+                        <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+                      ) : (
+                        <WhatsAppIcon size={16} />
+                      )}
+                      WhatsApp
+                    </button>
 
-                  <p className="text-center text-xs text-gray-400">
-                    También puedes escribirnos directamente a{' '}
-                    <a href={`mailto:${EMAIL}`} className="text-celeste hover:underline">
-                      {EMAIL}
-                    </a>
-                  </p>
+                    {/* Email */}
+                    <button
+                      type="button"
+                      onClick={handleEmail}
+                      disabled={!!loading}
+                      className="btn-border-anim flex items-center justify-center gap-2 bg-celeste text-gray-900 font-semibold py-3.5 rounded-full hover:bg-celeste/85 transition-all shadow hover:shadow-celeste/30 hover:shadow-lg disabled:opacity-70 text-sm"
+                    >
+                      {loading === 'email' ? (
+                        <span className="w-4 h-4 border-2 border-gray-900/40 border-t-gray-900 rounded-full animate-spin" />
+                      ) : (
+                        <Send size={15} />
+                      )}
+                      Correo
+                    </button>
+                  </div>
                 </form>
               )}
             </div>
