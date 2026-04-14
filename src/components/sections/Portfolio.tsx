@@ -24,13 +24,13 @@ const letterImages: Record<string, { light: string; dark: string }> = {
 
 // ─── Colores por categoría ────────────────────────────────────────────────────
 // Usados tanto en el selector ARCO como en el código de cada card.
-// A=blanco (sobre fondo oscuro del selector), R=celeste, C=amarillo, O=magenta
+// A=blanco (sobre fondo oscuro del selector), R=amarillo, C=magenta, O=celeste
 
 const CATEGORY_COLOR: Record<Exclude<ProjectCategory, 'todos'>, string> = {
   arquitectura:   '#ffffff',
-  regularizacion: '#83cfef',
-  interiorismo:   '#ffdc5b',
-  patrimonio:     '#e73978',
+  regularizacion: '#ffdc5b',
+  interiorismo:   '#e73978',
+  patrimonio:     '#83cfef',
 }
 
 // ─── Selector ARCO ───────────────────────────────────────────────────────────

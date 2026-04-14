@@ -7,9 +7,9 @@ import { cn } from '../../lib/utils'
 
 const CATEGORY_COLOR: Record<Exclude<Project['category'], never>, string> = {
   arquitectura:   '#ffffff',
-  regularizacion: '#83cfef',
-  interiorismo:   '#ffdc5b',
-  patrimonio:     '#e73978',
+  regularizacion: '#ffdc5b',
+  interiorismo:   '#e73978',
+  patrimonio:     '#83cfef',
 }
 
 const CATEGORY_LABEL: Record<ProjectCategory, string> = {
