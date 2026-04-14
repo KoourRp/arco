@@ -36,8 +36,8 @@ export function CurtainProvider({ children }: { children: React.ReactNode }) {
         aria-hidden="true"
       >
         <div className="curtain-band bg-amarillo" />
-        <div className="curtain-band bg-celeste" />
         <div className="curtain-band bg-magenta" />
+        <div className="curtain-band bg-celeste" />
       </div>
     </CurtainContext.Provider>
   )

@@ -26,8 +26,8 @@ export default function Hero() {
       {/* Decorative color bar */}
       <div className="absolute top-0 left-0 right-0 h-1 flex">
         <div className="flex-1 bg-amarillo" />
-        <div className="flex-1 bg-celeste" />
         <div className="flex-1 bg-magenta" />
+        <div className="flex-1 bg-celeste" />
       </div>
 
       {/* Content */}
