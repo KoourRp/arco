@@ -27,14 +27,13 @@ export type TipoProyecto = typeof TIPOS_VALIDOS[number]
 
 export interface Project {
   id:          number
-  number:      string           // "047", "011"
-  name:        string           // "Proyecto Salas"
+  number:      string
+  name:        string
   arcoTypes:   ARCOLetter[]
-  tipos:       TipoProyecto[]   // alcances técnicos
+  tipos:       TipoProyecto[]
   comuna:      string
   description: string
   image:       string
-  origin:      'ARCO' | 'URK' | 'UNARTE'
 }
 
 export const getProjectCode = (p: Project): string =>
@@ -61,7 +60,7 @@ export const projects: Project[] = [
     tipos: ['Ley del Mono'],
     comuna: 'El Bosque',
     description: '',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
-    origin: 'ARCO',
+    image: '',
   },
+
 ]

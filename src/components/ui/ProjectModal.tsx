@@ -20,17 +20,6 @@ function ARCOCode({ project }: { project: Project }) {
   )
 }
 
-// ─── Badge de origen ──────────────────────────────────────────────────────────
-
-function OriginBadge({ origin }: { origin: Project['origin'] }) {
-  if (origin === 'ARCO') return null
-  return (
-    <span className="inline-flex text-xs font-semibold px-3 py-1 rounded-full bg-zinc-800 text-zinc-300">
-      {origin === 'URK' ? 'En colaboración con URK' : 'En colaboración con UNARTE'}
-    </span>
-  )
-}
-
 // ─── Constantes ───────────────────────────────────────────────────────────────
 
 const MAX_DOTS     = 8
@@ -289,8 +278,6 @@ export default function ProjectModal({
                       {p.description}
                     </p>
 
-                    {/* Badge de origen si no es ARCO propio */}
-                    <OriginBadge origin={p.origin} />
 
                   </div>
                 </div>

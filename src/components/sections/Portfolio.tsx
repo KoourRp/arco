@@ -152,17 +152,6 @@ function ArcoSelector({
   )
 }
 
-// ─── Badge de origen ──────────────────────────────────────────────────────────
-
-function OriginBadge({ origin }: { origin: Project['origin'] }) {
-  if (origin === 'ARCO') return null
-  return (
-    <span className="absolute top-3 right-3 text-xs font-semibold px-3 py-1 rounded-full bg-zinc-800/80 text-zinc-300 backdrop-blur-sm">
-      {origin === 'URK' ? 'En colaboración con URK' : 'En colaboración con UNARTE'}
-    </span>
-  )
-}
-
 // ─── Código con color(es) ARCO ────────────────────────────────────────────────
 
 function CardCode({ project }: { project: Project }) {
@@ -225,8 +214,6 @@ function ProjectCard({
           </p>
         </div>
 
-        {/* Badge de origen */}
-        <OriginBadge origin={project.origin} />
       </div>
     </div>
   )
