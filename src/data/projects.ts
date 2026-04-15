@@ -60,7 +60,7 @@ export const projects: Project[] = [
     tipos: ['Ley del Mono'],
     comuna: 'El Bosque',
     description: 'Regularización integral de vivienda unifamiliar bajo estándares de Ley 20.898, asegurando la plusvalía y legalidad total del inmueble.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80',
   },
   {
     id: 2,
@@ -70,7 +70,7 @@ export const projects: Project[] = [
     tipos: ['Ley del Mono'],
     comuna: 'Maipú',
     description: 'Regularización integral de vivienda unifamiliar bajo estándares de Ley 20.898, asegurando la plusvalía y legalidad total del inmueble.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
   },
   {
     id: 3,
@@ -80,7 +80,7 @@ export const projects: Project[] = [
     tipos: ['Asesoría Normativa'],
     comuna: 'Cerro Navia',
     description: 'Consultoría estratégica para subdivisión de predios y optimización de normativa constructiva para futuras ampliaciones habitacionales.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1500534314209-a157a0f1f7bf?w=800&q=80',
   },
   {
     id: 4,
@@ -90,7 +90,7 @@ export const projects: Project[] = [
     tipos: ['Obra Menor'],
     comuna: 'Peñalolén',
     description: 'Regularización técnica de ampliación en condominio, armonizando las necesidades del usuario con la Ley de Copropiedad Inmobiliaria.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80',
   },
   {
     id: 5,
@@ -100,7 +100,7 @@ export const projects: Project[] = [
     tipos: ['Asesoría Normativa', 'Sanitaria'],
     comuna: 'Til Til',
     description: 'Gestión normativa y regularización sanitaria de complejo hotelero; un proceso clave para la obtención de patentes definitivas y operatividad legal.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1566073771259-5b39ddc9d1f8?w=800&q=80',
   },
   {
     id: 6,
@@ -110,7 +110,7 @@ export const projects: Project[] = [
     tipos: ['Obra Menor', 'Construcción'],
     comuna: 'Renca',
     description: 'Diseño arquitectónico de ampliación residencial personalizada, equilibrando el cumplimiento normativo con el confort y estilo de vida del cliente.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80',
   },
   {
     id: 7,
@@ -120,7 +120,7 @@ export const projects: Project[] = [
     tipos: ['Remodelación'],
     comuna: 'San Bernardo',
     description: 'Renovación de espacio gastronómico bajo criterios de diseño de autor, potenciando la identidad visual y la funcionalidad del restaurante.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80',
   },
   {
     id: 8,
@@ -130,7 +130,7 @@ export const projects: Project[] = [
     tipos: ['Remodelación'],
     comuna: 'Providencia',
     description: 'Ejecución de remodelación basada en brandbook corporativo, logrando una atmósfera de marca coherente, moderna y de alto impacto visual.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1565299624946-b28f40a04680?w=800&q=80',
   },
   {
     id: 9,
@@ -140,7 +140,7 @@ export const projects: Project[] = [
     tipos: ['Remodelación'],
     comuna: 'San Bernardo',
     description: 'Transformación de local temático, adaptando el diseño interior a la narrativa de marca para crear una experiencia inmersiva para el comensal.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80',
   },
   {
     id: 10,
@@ -150,7 +150,7 @@ export const projects: Project[] = [
     tipos: ['Remodelación'],
     comuna: 'Providencia',
     description: 'Re-styling de departamento: optimización de flujos mediante la apertura de espacios, rediseño de cocina y modernización de ambientes conectados.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80',
   },
   {
     id: 11,
@@ -160,7 +160,7 @@ export const projects: Project[] = [
     tipos: ['Sanitaria', 'Obra Menor'],
     comuna: 'Til Til',
     description: 'Regularización sanitaria y máster plan para complejo de cabañas, integrando la proyección arquitectónica de una nueva zona de cafetería.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1510798831971-9d08f58efb5e?w=800&q=80',
   },
   {
     id: 12,
@@ -170,7 +170,7 @@ export const projects: Project[] = [
     tipos: ['Asesoría Normativa', 'Construcción', 'Asesoría de Diseño', 'Obra Nueva', 'Eléctrica', 'Topografía', 'Paisajismo', 'Sanitaria'],
     comuna: 'Til Til',
     description: 'Desarrollo integral de complejo hotelero en sitio eriazo, abarcando desde el diseño conceptual y eléctrico hasta la gestión normativa completa.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1503174971373-b1f69850bded?w=800&q=80',
   },
   {
     id: 13,
@@ -180,7 +180,7 @@ export const projects: Project[] = [
     tipos: ['Remodelación', 'Construcción'],
     comuna: 'Providencia',
     description: 'Remodelación integral de cocina y baño con enfoque en diseño inclusivo y terapéutico. El proyecto prioriza la seguridad mediante el control de zonas húmedas, maximización de la luz natural para el bienestar cognitivo y una ergonomía adaptada para usuarios con Parkinson',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80',
   },
   {
     id: 14,
@@ -190,7 +190,7 @@ export const projects: Project[] = [
     tipos: ['Remodelación', 'Construcción'],
     comuna: 'Providencia',
     description: 'Rediseño de cocina bajo preceptos de la cultura judía, optimizando la zonificación de flujos y la duplicidad de áreas de preparación. Un proyecto que equilibra la eficiencia espacial con el respeto riguroso a las tradiciones culinarias y religiosas.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1556909114335-f6e7ad7d3136?w=800&q=80',
   },
   {
     id: 15,
@@ -200,7 +200,7 @@ export const projects: Project[] = [
     tipos: ['Ley del Mono'],
     comuna: 'Lampa',
     description: 'Asesoría experta y regularización de ampliaciones en conjuntos residenciales privados. Aseguramos la total conformidad con la Ley de Copropiedad Inmobiliaria, facilitando la convivencia comunitaria y resguardando el valor del patrimonio individual.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80',
   },
   {
     id: 16,
@@ -210,7 +210,7 @@ export const projects: Project[] = [
     tipos: ['Obra Menor', 'Asesoría Normativa'],
     comuna: 'Lampa',
     description: 'Asesoría experta y regularización de ampliaciones en conjuntos residenciales privados. Aseguramos la total conformidad con la Ley de Copropiedad Inmobiliaria, facilitando la convivencia comunitaria y resguardando el valor del patrimonio individual.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80',
   },
   {
     id: 17,
@@ -220,7 +220,7 @@ export const projects: Project[] = [
     tipos: ['Obra Menor', 'Asesoría Normativa'],
     comuna: 'Lampa',
     description: 'Asesoría experta y regularización de ampliaciones en conjuntos residenciales privados. Aseguramos la total conformidad con la Ley de Copropiedad Inmobiliaria, facilitando la convivencia comunitaria y resguardando el valor del patrimonio individual.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1590012315-89c6dda5e48b?w=800&q=80',
   },
   {
     id: 18,
@@ -230,7 +230,7 @@ export const projects: Project[] = [
     tipos: ['Obra Menor', 'Asesoría Normativa'],
     comuna: 'Lampa',
     description: 'Asesoría experta y regularización de ampliaciones en conjuntos residenciales privados. Aseguramos la total conformidad con la Ley de Copropiedad Inmobiliaria, facilitando la convivencia comunitaria y resguardando el valor del patrimonio individual.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1464082354059-abe8655e8b77?w=800&q=80',
   },
   {
     id: 19,
@@ -240,7 +240,7 @@ export const projects: Project[] = [
     tipos: ['Obra Menor', 'Asesoría Normativa'],
     comuna: 'Lampa',
     description: 'Asesoría experta y regularización de ampliaciones en conjuntos residenciales privados. Aseguramos la total conformidad con la Ley de Copropiedad Inmobiliaria, facilitando la convivencia comunitaria y resguardando el valor del patrimonio individual.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=800&q=80',
   },
   {
     id: 20,
@@ -250,7 +250,7 @@ export const projects: Project[] = [
     tipos: ['Remodelación', 'Asesoría de Diseño'],
     comuna: 'Lampa',
     description: 'Asesoría experta y regularización de ampliaciones en conjuntos residenciales privados. Aseguramos la total conformidad con la Ley de Copropiedad Inmobiliaria, facilitando la convivencia comunitaria y resguardando el valor del patrimonio individual.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&q=80',
   },
   {
     id: 21,
@@ -260,7 +260,7 @@ export const projects: Project[] = [
     tipos: ['Ley del Mono'],
     comuna: 'San José de Maipo',
     description: 'Regularización integral de vivienda unifamiliar bajo estándares de Ley 20.898, asegurando la plusvalía y legalidad total del inmueble.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1470770841072-f978cf4d7db9?w=800&q=80',
   },
   {
     id: 22,
@@ -270,7 +270,7 @@ export const projects: Project[] = [
     tipos: ['Sanitaria'],
     comuna: 'Til Til',
     description: 'Gestión y obtención de regularización sanitaria para instalaciones de hospedaje minero. Enfoque en el cumplimiento estricto de estándares de habitabilidad y salud pública, garantizando la operatividad segura de la infraestructura laboral.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1565008447742-2f52c9de23c7?w=800&q=80',
   },
   {
     id: 23,
@@ -280,7 +280,7 @@ export const projects: Project[] = [
     tipos: ['Obra Menor', 'Recepción Definitiva', 'Sanitaria'],
     comuna: 'Maipú',
     description: 'Gestión integral de patentes definitivas y regularización sanitaria para el sector gastronómico. Incluye la actualización de instalaciones eléctricas y sanitarias para asegurar la operatividad comercial inmediata.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80',
   },
   {
     id: 24,
@@ -290,7 +290,7 @@ export const projects: Project[] = [
     tipos: ['Obra Menor'],
     comuna: 'Cerrillos',
     description: 'Proyecto de reconversión y adaptación de vivienda a actividad productiva de carácter industrial. El desafío consistió en la transformación estructural y normativa de un espacio residencial para cumplir con los estándares de seguridad, zonificación y flujos operativos necesarios para el alto desempeño industrial.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1513828583688-1b7e1f6b3fb4?w=800&q=80',
   },
   {
     id: 25,
@@ -300,7 +300,7 @@ export const projects: Project[] = [
     tipos: ['Obra Menor'],
     comuna: 'Santiago',
     description: 'Regularización y adecuación normativa de infraestructura industrial y galpones de carácter productivo, optimizando la superficie para operaciones de alto desempeño.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1486406346491-ca6e0d3b31f4?w=800&q=80',
   },
   {
     id: 26,
@@ -310,7 +310,7 @@ export const projects: Project[] = [
     tipos: ['Obra Nueva', 'Construcción', 'Sanitaria'],
     comuna: 'Rancagua',
     description: 'Proyección técnica y construcción de infraestructura farmacéutica especializada. El proyecto integra normativas sanitarias estrictas con un diseño funcional orientado a la atención de salud de alta precisión.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800&q=80',
   },
   {
     id: 27,
@@ -320,7 +320,7 @@ export const projects: Project[] = [
     tipos: ['Obra Nueva'],
     comuna: 'Isla Maipo',
     description: 'Regularización de infraestructura habitacional y operativa dentro de predio agrícola de alta producción, equilibrando la normativa rural con las necesidades residenciales.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1500076009040-b4e5e11bbafe?w=800&q=80',
   },
   {
     id: 28,
@@ -330,7 +330,7 @@ export const projects: Project[] = [
     tipos: ['Obra Menor'],
     comuna: 'Renca',
     description: 'Regularización técnica de bodegas de almacenamiento para productos congelados y áreas administrativas, garantizando el cumplimiento de la cadena de frío y normativas de seguridad.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
   },
   {
     id: 29,
@@ -340,7 +340,7 @@ export const projects: Project[] = [
     tipos: ['Obra Menor'],
     comuna: 'Quilicura',
     description: '',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1497215842964-222b430dc094?w=800&q=80',
   },
   {
     id: 30,
@@ -350,7 +350,7 @@ export const projects: Project[] = [
     tipos: ['Obra Nueva', 'Sanitaria', 'Eléctrica', 'Construcción'],
     comuna: 'San Pedro',
     description: 'Desarrollo integral de centro comercial que abarca desde la proyección arquitectónica y de especialidades eléctricas hasta la gestión directa en terreno. El proyecto destaca por una rigurosa supervisión de ejecución de obras, garantizando el cumplimiento de plazos técnicos, la optimización de recursos y un diseño final orientado a maximizar tanto el flujo peatonal como la rentabilidad del espacio.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80',
   },
   {
     id: 31,
@@ -360,7 +360,7 @@ export const projects: Project[] = [
     tipos: ['Topografía'],
     comuna: 'Maipú',
     description: 'Estudios topográficos de precisión y levantamiento aerofotogramétrico (ortofotos) para el máster plan de modificación y subdivisiones territoriales de terminal logístico.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1586769752873-e97d31a2dbc7?w=800&q=80',
   },
   {
     id: 32,
@@ -370,7 +370,7 @@ export const projects: Project[] = [
     tipos: ['Obra Menor', 'Eléctrica'],
     comuna: 'Santiago',
     description: 'Regularización eléctrica y tramitación de patentes comerciales para local técnico-comercial, garantizando el cumplimiento de estándares de seguridad industrial y comercial.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80',
   },
   {
     id: 33,
@@ -380,7 +380,7 @@ export const projects: Project[] = [
     tipos: ['Sanitaria', 'Eléctrica'],
     comuna: 'Santiago',
     description: 'Gestión integral de patentes definitivas y regularización sanitaria para el sector gastronómico. Incluye la actualización de instalaciones eléctricas y sanitarias para asegurar la operatividad comercial inmediata.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1519708227418-a8c3a83aff72?w=800&q=80',
   },
   {
     id: 34,
@@ -390,7 +390,7 @@ export const projects: Project[] = [
     tipos: ['Sanitaria', 'Eléctrica'],
     comuna: 'Santiago',
     description: 'Asesoría de implementación y regularización sanitaria para centro de salud familiar en el casco histórico. Un desafío de adaptación de infraestructura patrimonial a estándares médicos contemporáneos.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800&q=80',
   },
   {
     id: 35,
@@ -400,7 +400,7 @@ export const projects: Project[] = [
     tipos: ['Obra Nueva', 'Sanitaria', 'Eléctrica', 'Topografía'],
     comuna: 'Quinta Normal',
     description: 'Proyección y construcción de vivienda unifamiliar de obra nueva, ejecutada sobre cimientos preexistentes. Un ejercicio de optimización estructural que integra topografía avanzada y diseño de especialidades desde cero.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1592595896551-12b371d546d5?w=800&q=80',
   },
   {
     id: 36,
@@ -410,7 +410,7 @@ export const projects: Project[] = [
     tipos: ['Obra Nueva'],
     comuna: 'Santiago',
     description: 'Diseño y construcción de galpón comercial en zona de alta densidad, optimizando la luz natural y el volumen constructivo para maximizar el área de exhibición y ventas.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80',
   },
   {
     id: 37,
@@ -420,7 +420,7 @@ export const projects: Project[] = [
     tipos: ['Sanitaria', 'Obra Nueva'],
     comuna: 'Cerrillos',
     description: 'Ingeniería de detalles y proyección de redes de infraestructura sanitaria (alcantarillado y agua potable) para terminales logísticos, garantizando la continuidad operativa y el cumplimiento de normativas sanitarias vigentes.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&q=80',
   },
   {
     id: 38,
@@ -430,7 +430,7 @@ export const projects: Project[] = [
     tipos: ['Asesoría Licitación'],
     comuna: 'Ñuñoa',
     description: 'Asesoría técnica especializada para el proceso de licitación de reposición de pavimentos en el Estadio Nacional. El servicio integró la gestión de presupuestos detallados, cubicaciones de alta precisión y consolidación de información técnica crítica para proyectos de infraestructura pública.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&q=80',
   },
   {
     id: 39,
@@ -440,7 +440,7 @@ export const projects: Project[] = [
     tipos: ['Obra Nueva', 'Sanitaria'],
     comuna: 'San Bernardo',
     description: 'Ingeniería de detalles y proyección de redes de infraestructura sanitaria (alcantarillado y agua potable) para terminales logísticos, garantizando la continuidad operativa y el cumplimiento de normativas sanitarias vigentes.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1561361513-2d747b00f8b8?w=800&q=80',
   },
   {
     id: 40,
@@ -450,7 +450,7 @@ export const projects: Project[] = [
     tipos: ['Eléctrica', 'Sanitaria', 'Obra Menor'],
     comuna: 'Estación Central',
     description: 'Regularización integral de especialidades eléctricas y sanitarias para conjunto habitacional. El enfoque se centró en la actualización de sistemas críticos para garantizar la seguridad de los residentes y la conformidad con los estándares municipales actuales.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
   },
   {
     id: 41,
@@ -460,7 +460,7 @@ export const projects: Project[] = [
     tipos: ['Sanitaria'],
     comuna: 'Conchalí',
     description: 'Desarrollo de proyectos sanitarios para galpones destinados a actividades productivas. Diseño orientado a la eficiencia hídrica y cumplimiento normativo para la obtención de permisos operativos.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1504711434489-ffaddb82b57f?w=800&q=80',
   },
   {
     id: 42,
@@ -470,7 +470,7 @@ export const projects: Project[] = [
     tipos: ['Obra Menor', 'Recepción Definitiva'],
     comuna: 'San Joaquín',
     description: 'Gestión normativa y asesoría técnica para la obtención de Recepción Definitiva y Patente Sanitaria. Un proceso clave de regularización de obra menor para garantizar que la infraestructura cumpla con los estándares exigidos por el ISP y el MINSAL.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1576671081837-49000212a223?w=800&q=80',
   },
   {
     id: 43,
@@ -480,7 +480,7 @@ export const projects: Project[] = [
     tipos: ['Obra Nueva', 'Topografía'],
     comuna: 'Lampa',
     description: 'Levantamiento topográfico de alta precisión y rectificación de deslindes para predio comercial. El proceso incluyó la corrección técnica perimetral como etapa crítica previa a la proyección de un nuevo centro comercial.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1503455637927-730bce8583c0?w=800&q=80',
   },
   {
     id: 44,
@@ -490,7 +490,7 @@ export const projects: Project[] = [
     tipos: ['Obra Nueva'],
     comuna: 'Quintero',
     description: 'Máster plan y proyección arquitectónica para complejo hotelero residencial, enfocado en la integración con el entorno costero y la eficiencia en el uso de espacios comunes.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80',
   },
   {
     id: 45,
@@ -500,7 +500,7 @@ export const projects: Project[] = [
     tipos: ['Obra Menor'],
     comuna: 'Las Condes',
     description: 'Diseño, proyección y regularización de quincho de alto estándar, integrando criterios de materialidad y funcionalidad para potenciar el área de esparcimiento residencial.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1519354754132-2ee0e564ced7?w=800&q=80',
   },
   {
     id: 46,
@@ -510,7 +510,7 @@ export const projects: Project[] = [
     tipos: ['Topografía', 'Sub-División'],
     comuna: 'San Pedro',
     description: 'Consultoría estratégica para subdivisión predial y levantamiento topográfico de precisión. Gestión técnica orientada a la optimización del uso del suelo y la creación de nuevas unidades territoriales bajo la normativa vigente.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80',
   },
   {
     id: 47,
@@ -520,7 +520,7 @@ export const projects: Project[] = [
     tipos: ['Asesoría Normativa', 'Construcción', 'Remodelación', 'Asesoría de Diseño', 'Obra Nueva', 'Eléctrica', 'Topografía', 'Sanitaria', 'Interiorismo', 'Mobiliario', 'Realidad Aumentada', 'Paisajismo'],
     comuna: 'Lo Barnechea',
     description: 'Desarrollo integral de habilitación en nivel zócalo con un enfoque en diseño modular y tecnología de punta. El proyecto destaca por la implementación de sistemas de ventanas cuadruples sobre rieles, control parental inteligente y una experiencia inmersiva mediante realidad aumentada. Incluye paisajismo de precisión, cálculo de volúmenes de excavación para piscina/quincho y un respeto riguroso por la normativa de riesgo geográfico a pie de monte.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
   },
   {
     id: 48,
@@ -530,7 +530,7 @@ export const projects: Project[] = [
     tipos: ['Obra Nueva'],
     comuna: 'Pudahuel',
     description: 'Regularización técnica de vivienda unifamiliar emplazada en zona de pie de monte. El proyecto abordó la complejidad geográfica del terreno, asegurando que la edificación cumpla con todas las normativas de seguridad y habitabilidad específicas para zonas de ladera.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80',
   },
   {
     id: 49,
@@ -540,7 +540,7 @@ export const projects: Project[] = [
     tipos: ['Obra Nueva'],
     comuna: 'Ñuñoa',
     description: 'Desarrollo integral de complejo habitacional y digitalización avanzada de estructuras preexistentes. El proyecto combina el diseño de obra nueva con un riguroso levantamiento técnico para la integración armónica en una zona de alta demanda residencial.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1574958269340-fa927503f3dd?w=800&q=80',
   },
   {
     id: 50,
@@ -550,7 +550,7 @@ export const projects: Project[] = [
     tipos: ['Obra Nueva'],
     comuna: 'Córdoba',
     description: 'Proyección técnica y digitalización avanzada para infraestructura de observación astronómica. Un proyecto que combina precisión técnica con el desarrollo de espacios especializados para ciencia y tecnología.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=800&q=80',
   },
   {
     id: 51,
@@ -560,7 +560,7 @@ export const projects: Project[] = [
     tipos: ['Ley del Mono'],
     comuna: 'La Florida',
     description: '???',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1571939228382-b2f2b585ce15?w=800&q=80',
   },
   {
     id: 52,
@@ -570,7 +570,7 @@ export const projects: Project[] = [
     tipos: ['Concurso', 'Proyecto Urbano', 'Paisajismo'],
     comuna: 'Santiago',
     description: '???',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80',
   },
   {
     id: 53,
@@ -580,7 +580,7 @@ export const projects: Project[] = [
     tipos: ['Concurso', 'Proyecto Urbano', 'Paisajismo'],
     comuna: 'Castro',
     description: '???',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1516214165638-580624af4282?w=800&q=80',
   },
   {
     id: 54,
@@ -590,7 +590,7 @@ export const projects: Project[] = [
     tipos: ['Paisajismo', 'Proyecto Urbano', 'Concurso', 'Topografía'],
     comuna: 'Santiago',
     description: '???',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1421789665209-252829ac4f48?w=800&q=80',
   },
   {
     id: 55,
@@ -600,7 +600,7 @@ export const projects: Project[] = [
     tipos: ['Restauración', 'Rehabilitación', 'Proyecto Urbano', 'Paisajismo'],
     comuna: 'San José de Maipo',
     description: '???',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=800&q=80',
   },
   {
     id: 56,
@@ -610,6 +610,7 @@ export const projects: Project[] = [
     tipos: ['Sanitaria'],
     comuna: 'Castro',
     description: '???',
-    image: '',
-  }
+    image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&q=80',
+  },
+
 ]
