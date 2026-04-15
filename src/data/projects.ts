@@ -440,7 +440,7 @@ export const projects: Project[] = [
     tipos: ['Obra Nueva', 'Sanitaria'],
     comuna: 'San Bernardo',
     description: 'Ingeniería de detalles y proyección de redes de infraestructura sanitaria (alcantarillado y agua potable) para terminales logísticos, garantizando la continuidad operativa y el cumplimiento de normativas sanitarias vigentes.',
-    image: 'https://images.unsplash.com/photo-1586773860383-dba8fe1e1854?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80',
   },
   {
     id: 40,
