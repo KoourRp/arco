@@ -224,7 +224,8 @@ export default function ProjectModal({
                   </div>
 
                   {/* ── Columna derecha: contenido (60%) ── */}
-                  <div className="sm:w-3/5 flex flex-col justify-center p-8 sm:p-10 overflow-y-auto">
+                  <div className="sm:w-3/5 flex flex-col p-8 sm:p-10 overflow-y-auto">
+                  <div className="my-auto">
 
                     {/* Código ARCO */}
                     <div className="mb-5">
@@ -274,11 +275,13 @@ export default function ProjectModal({
                     )}
 
                     {/* Descripción */}
-                    <p className="text-base leading-relaxed text-zinc-300 mb-5 line-clamp-3">
-                      {p.description}
-                    </p>
+                    {p.description && (
+                      <p className="text-base leading-relaxed text-zinc-300 mb-5">
+                        {p.description}
+                      </p>
+                    )}
 
-
+                  </div>
                   </div>
                 </div>
               </div>
