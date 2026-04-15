@@ -290,7 +290,7 @@ export const projects: Project[] = [
     tipos: ['Obra Menor'],
     comuna: 'Cerrillos',
     description: 'Proyecto de reconversión y adaptación de vivienda a actividad productiva de carácter industrial. El desafío consistió en la transformación estructural y normativa de un espacio residencial para cumplir con los estándares de seguridad, zonificación y flujos operativos necesarios para el alto desempeño industrial.',
-    image: 'https://images.unsplash.com/photo-1553361371-9b20eba4bf5d?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=800&q=80',
   },
   {
     id: 25,
@@ -320,7 +320,7 @@ export const projects: Project[] = [
     tipos: ['Obra Nueva'],
     comuna: 'Isla Maipo',
     description: 'Regularización de infraestructura habitacional y operativa dentro de predio agrícola de alta producción, equilibrando la normativa rural con las necesidades residenciales.',
-    image: 'https://images.unsplash.com/photo-1500937386664-43d2e77b5286?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&q=80',
   },
   {
     id: 28,
@@ -440,7 +440,7 @@ export const projects: Project[] = [
     tipos: ['Obra Nueva', 'Sanitaria'],
     comuna: 'San Bernardo',
     description: 'Ingeniería de detalles y proyección de redes de infraestructura sanitaria (alcantarillado y agua potable) para terminales logísticos, garantizando la continuidad operativa y el cumplimiento de normativas sanitarias vigentes.',
-    image: 'https://images.unsplash.com/photo-1530023050876-4d4b2e15f35c?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1586773860383-dba8fe1e1854?w=800&q=80',
   },
   {
     id: 40,
