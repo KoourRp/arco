@@ -612,5 +612,4 @@ export const projects: Project[] = [
     description: '???',
     image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&q=80',
   },
-
 ]
