@@ -83,7 +83,7 @@ function ArcoLetter({
           maskMode:           'luminance',
         } as React.CSSProperties}
         className={cn(
-          'w-20 h-20 cursor-pointer select-none transition-all duration-300',
+          'w-14 h-14 sm:w-20 sm:h-20 cursor-pointer select-none transition-all duration-300',
           lit ? 'opacity-100' : 'opacity-40 group-hover:opacity-100',
         )}
       />
@@ -122,8 +122,8 @@ function ArcoSelector({
   onAll:    () => void
 }) {
   return (
-    <div className="rounded-2xl bg-white dark:bg-zinc-950 px-8 py-12 mb-16">
-      <div className="flex items-start justify-center gap-10 sm:gap-16 lg:gap-24">
+    <div className="rounded-2xl bg-white dark:bg-zinc-950 px-4 sm:px-8 py-6 sm:py-12 mb-8 sm:mb-16">
+      <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center gap-4 sm:gap-16 lg:gap-24">
         {ARCO_LETTERS.map(({ letter, label }) => (
           <ArcoLetter
             key={letter}

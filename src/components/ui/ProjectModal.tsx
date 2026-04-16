@@ -14,7 +14,7 @@ import { cn } from '../../lib/utils'
 
 function ARCOCode({ project }: { project: Project }) {
   return (
-    <span className="font-mono text-xs tracking-widest uppercase" style={getCodeStyle(project.arcoTypes)}>
+    <span className="font-mono text-xs tracking-widest uppercase animate-fade-in" style={getCodeStyle(project.arcoTypes)}>
       {getProjectCode(project)}
     </span>
   )
@@ -237,7 +237,7 @@ export default function ProjectModal({
                       {p.name.split(' ').map((word, wi) => (
                         <p
                           key={wi}
-                          className="text-4xl md:text-5xl font-black leading-[0.9] uppercase tracking-tight text-white"
+                          className="text-2xl sm:text-4xl md:text-5xl font-black leading-[0.9] uppercase tracking-tight text-white"
                         >
                           {word}
                         </p>

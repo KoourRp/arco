@@ -39,7 +39,7 @@ export default function Header() {
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled
+        (scrolled || menuOpen)
           ? 'bg-white/80 dark:bg-gray-950/80 backdrop-blur-md shadow-sm'
           : 'bg-transparent',
       )}
@@ -107,11 +107,17 @@ export default function Header() {
       {/* Mobile menu */}
       <div
         className={cn(
-          'md:hidden overflow-hidden transition-all duration-300',
+          'md:hidden overflow-hidden transition-all duration-500 ease-in-out',
           menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0',
         )}
       >
         <div className="bg-white/95 dark:bg-gray-950/95 backdrop-blur-md px-6 py-4 flex flex-col gap-4 border-t border-gray-100 dark:border-gray-800">
+          {/* Franja decorativa con colores ARCO */}
+          <div className="flex h-[2px] rounded-full overflow-hidden -mx-6 -mt-4 mb-0">
+            <div className="flex-1 bg-amarillo" />
+            <div className="flex-1 bg-magenta" />
+            <div className="flex-1 bg-celeste" />
+          </div>
           {navLinks.map(link => (
             <a
               key={link.href}
