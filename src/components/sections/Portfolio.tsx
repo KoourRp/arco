@@ -221,14 +221,29 @@ function ProjectCard({
 
 // ─── Sección principal ────────────────────────────────────────────────────────
 
+const INITIAL_COUNT = 6
+
 export default function Portfolio() {
   const [activeLetter, setActiveLetter]     = useState<ARCOLetter | null>(null)
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [showAll, setShowAll]               = useState(false)
   const { ref: headRef, isVisible: headVisible } = useScrollAnimation()
 
   const filtered = activeLetter
     ? projects.filter(p => p.arcoTypes.includes(activeLetter))
     : projects
+
+  const visible = showAll ? filtered : filtered.slice(0, INITIAL_COUNT)
+
+  function handleFilter(l: ARCOLetter) {
+    setActiveLetter(prev => prev === l ? null : l)
+    setShowAll(false)
+  }
+
+  function handleAll() {
+    setActiveLetter(null)
+    setShowAll(false)
+  }
 
   return (
     <section id="portfolio" className="py-24 lg:py-32 bg-white dark:bg-gray-950">
@@ -255,13 +270,13 @@ export default function Portfolio() {
         {/* Selector ARCO */}
         <ArcoSelector
           active={activeLetter}
-          onSelect={l => setActiveLetter(prev => prev === l ? null : l)}
-          onAll={() => setActiveLetter(null)}
+          onSelect={handleFilter}
+          onAll={handleAll}
         />
 
         {/* Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((project, i) => (
+          {visible.map((project, i) => (
             <ProjectCard
               key={project.id}
               project={project}
@@ -270,6 +285,18 @@ export default function Portfolio() {
             />
           ))}
         </div>
+
+        {/* Mostrar más / Mostrar menos */}
+        {filtered.length > INITIAL_COUNT && (
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={() => setShowAll(v => !v)}
+              className="btn-border-anim px-8 py-3 rounded-full text-sm font-semibold border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:border-zinc-500 dark:hover:border-zinc-500 transition-all duration-300"
+            >
+              {showAll ? 'Mostrar menos' : `Mostrar más (${filtered.length - INITIAL_COUNT} proyectos)`}
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Modal */}
