@@ -50,9 +50,10 @@ export default function ProjectModal({
   const totalCount = navProjects.length
   const showNav    = totalCount > 1
 
-  // Color del dot activo: primera letra del proyecto actual
-  const currentProject = navProjects[currentIndex]
-  const dotColor       = ARCO_COLORS[currentProject.arcoTypes[0]]
+  // Color del dot: filtro activo (consistente con la letra del filtro) o tipo del proyecto actual
+  const dotColor = filterLetter
+    ? ARCO_COLORS[filterLetter]
+    : ARCO_COLORS[navProjects[currentIndex].arcoTypes[0]]
 
   // ── Scroll programático ───────────────────────────────────────────────────
 
@@ -100,12 +101,18 @@ export default function ProjectModal({
     return () => { document.body.style.overflow = '' }
   }, [])
 
-  // ── Dots: ventana deslizante ──────────────────────────────────────────────
+  // ── Dots: rail con translateY ─────────────────────────────────────────────
+  // En vez de una ventana discreta, el contenedor completo se desplaza con
+  // CSS transform para que los puntos se muevan de verdad al hacer scroll.
 
-  const visibleCount = Math.min(totalCount, MAX_DOTS)
-  let startDot = Math.max(0, currentIndex - Math.floor(MAX_DOTS / 2))
-  startDot = Math.min(startDot, totalCount - visibleCount)
-  const visibleDotIndices = Array.from({ length: visibleCount }, (_, i) => startDot + i)
+  const DOT_SLOT     = 26   // button h-5 (20px) + gap-1.5 (6px)
+  const VISIBLE_DOTS = Math.min(totalCount, MAX_DOTS)
+  const RAIL_H       = VISIBLE_DOTS * 20 + Math.max(0, VISIBLE_DOTS - 1) * 6
+
+  // Mantener el punto activo centrado en el área visible
+  const rawTranslate   = RAIL_H / 2 - 10 - currentIndex * DOT_SLOT
+  const minTranslate   = totalCount > MAX_DOTS ? -(totalCount - MAX_DOTS) * DOT_SLOT : 0
+  const dotsTranslateY = Math.max(minTranslate, Math.min(0, rawTranslate))
 
   // ─────────────────────────────────────────────────────────────────────────
 
@@ -153,25 +160,36 @@ export default function ProjectModal({
               <ChevronUp size={16} />
             </button>
 
-            <div className="flex flex-col items-center gap-1.5 py-1">
-              {visibleDotIndices.map(i => (
-                <button
-                  key={i}
-                  onClick={() => scrollToIndex(i)}
-                  aria-label={`Proyecto ${i + 1}`}
-                  className="flex items-center justify-center w-5 h-5"
-                >
-                  <span
-                    style={i === currentIndex ? { backgroundColor: dotColor } : undefined}
-                    className={cn(
-                      'rounded-full transition-all duration-300',
-                      i === currentIndex
-                        ? 'w-2.5 h-2.5'
-                        : 'w-1.5 h-1.5 bg-zinc-600 hover:bg-zinc-400',
-                    )}
-                  />
-                </button>
-              ))}
+            <div
+              className="flex flex-col items-center overflow-hidden"
+              style={{ height: `${RAIL_H}px` }}
+            >
+              <div
+                className="flex flex-col items-center gap-1.5 flex-shrink-0"
+                style={{
+                  transform:  `translateY(${dotsTranslateY}px)`,
+                  transition: 'transform 0.3s ease',
+                }}
+              >
+                {Array.from({ length: totalCount }, (_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => scrollToIndex(i)}
+                    aria-label={`Proyecto ${i + 1}`}
+                    className="flex items-center justify-center w-5 h-5 flex-shrink-0"
+                  >
+                    <span
+                      style={i === currentIndex ? { backgroundColor: dotColor } : undefined}
+                      className={cn(
+                        'rounded-full transition-all duration-300',
+                        i === currentIndex
+                          ? 'w-2.5 h-2.5'
+                          : 'w-1.5 h-1.5 bg-zinc-600 hover:bg-zinc-400',
+                      )}
+                    />
+                  </button>
+                ))}
+              </div>
             </div>
 
             <button
