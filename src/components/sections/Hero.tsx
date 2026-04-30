@@ -45,11 +45,11 @@ export default function Hero() {
         </div>
 
         <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black tracking-tight leading-none mb-6">
-          <span className="block">Espacios que</span>
+          <span className="block text-white">Espacios que</span>
           <span className="block text-gradient-anim">
             transforman
           </span>
-          <span className="block">vidas</span>
+          <span className="block text-white">vidas</span>
         </h1>
 
         <p className="max-w-2xl mx-auto text-lg sm:text-xl text-gray-200 leading-relaxed mb-12">
