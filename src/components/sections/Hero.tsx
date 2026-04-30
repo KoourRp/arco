@@ -44,7 +44,7 @@ export default function Hero() {
           Laboratorio de Arquitectura · Santiago, Chile
         </div>
 
-        <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black tracking-tight leading-none mb-6">
+        <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black tracking-tight leading-none mb-6 text-white">
           <span className="block text-white">Espacios que</span>
           <span className="block text-gradient-anim">
             transforman
