@@ -72,6 +72,14 @@
   animation: border-spin 3.8s linear infinite;
 }
 
+/* En dispositivos touch (mobile): activar el borde al presionar */
+@media (hover: none) {
+  .btn-border-anim:active::before {
+    opacity: 1;
+    animation: border-spin 3.8s linear infinite;
+  }
+}
+
 /* Color bar carousel animation — triggers after curtain rises */
 @keyframes color-carousel {
   from { transform: translateX(-66.6667%); }

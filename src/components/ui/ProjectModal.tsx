@@ -151,7 +151,7 @@ export default function ProjectModal({
               onClick={() => scrollToIndex(currentIndex - 1)}
               aria-label="Proyecto anterior"
               className={cn(
-                'flex items-center justify-center w-8 h-8 rounded-full transition-all duration-200 text-white hover:bg-white/15',
+                'btn-border-anim flex items-center justify-center w-8 h-8 rounded-full transition-all duration-200 text-white hover:bg-white/15',
                 currentIndex === 0 ? 'opacity-0 pointer-events-none' : 'opacity-100',
               )}
             >
@@ -166,7 +166,7 @@ export default function ProjectModal({
               onClick={() => scrollToIndex(currentIndex + 1)}
               aria-label="Proyecto siguiente"
               className={cn(
-                'flex items-center justify-center w-8 h-8 rounded-full transition-all duration-200 text-white hover:bg-white/15',
+                'btn-border-anim flex items-center justify-center w-8 h-8 rounded-full transition-all duration-200 text-white hover:bg-white/15',
                 currentIndex === totalCount - 1 ? 'opacity-0 pointer-events-none' : 'opacity-100',
               )}
             >
