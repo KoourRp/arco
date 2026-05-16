@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
-import { X, ChevronUp, ChevronDown } from 'lucide-react'
+import { X, ChevronUp, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react'
 import {
   type Project,
   type ARCOLetter,
@@ -140,6 +140,40 @@ export default function ProjectModal({
         >
           <X size={16} strokeWidth={2.5} />
         </button>
+
+        {/* ── Navegación mobile: prev / contador / next ── */}
+        {showNav && (
+          <div
+            className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex sm:hidden items-center gap-3"
+            onClick={e => e.stopPropagation()}
+          >
+            <button
+              onClick={() => scrollToIndex(currentIndex - 1)}
+              aria-label="Proyecto anterior"
+              className={cn(
+                'flex items-center justify-center w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm transition-all duration-200 text-white',
+                currentIndex === 0 ? 'opacity-0 pointer-events-none' : 'opacity-100',
+              )}
+            >
+              <ChevronLeft size={14} />
+            </button>
+
+            <span className="text-white/80 text-xs font-mono px-1">
+              {currentIndex + 1} / {totalCount}
+            </span>
+
+            <button
+              onClick={() => scrollToIndex(currentIndex + 1)}
+              aria-label="Proyecto siguiente"
+              className={cn(
+                'flex items-center justify-center w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm transition-all duration-200 text-white',
+                currentIndex === totalCount - 1 ? 'opacity-0 pointer-events-none' : 'opacity-100',
+              )}
+            >
+              <ChevronRight size={14} />
+            </button>
+          </div>
+        )}
 
         {/* ── Panel de navegación lateral (dots + chevrons) ── */}
         {showNav && (

@@ -196,14 +196,14 @@ function ProjectCard({
           loading="lazy"
         />
 
-        {/* Overlay oscuro con gradiente — solo en hover */}
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-gray-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+        {/* Overlay oscuro con gradiente — siempre visible en mobile, hover en desktop */}
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-gray-950/40 to-transparent sm:opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
 
         {/* Blur sutil en el tercio inferior */}
-        <div className="absolute bottom-0 left-0 right-0 h-2/3 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+        <div className="absolute bottom-0 left-0 right-0 h-2/3 backdrop-blur-[1px] sm:opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
 
-        {/* Info en hover */}
-        <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-400 ease-out">
+        {/* Info — siempre visible en mobile, hover en desktop */}
+        <div className="absolute bottom-0 left-0 right-0 p-5 sm:translate-y-3 sm:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-400 ease-out">
           <CardCode project={project} />
           <p className="text-xs text-zinc-400 mb-1 tracking-wide">{project.comuna}</p>
           <h3 className="font-bold text-white text-lg leading-snug mb-1">
