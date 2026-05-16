@@ -144,21 +144,21 @@ export default function ProjectModal({
         {/* ── Navegación mobile: prev / contador / next ── */}
         {showNav && (
           <div
-            className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex sm:hidden items-center gap-3"
+            className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex sm:hidden items-center gap-1 px-2 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-lg shadow-black/30"
             onClick={e => e.stopPropagation()}
           >
             <button
               onClick={() => scrollToIndex(currentIndex - 1)}
               aria-label="Proyecto anterior"
               className={cn(
-                'flex items-center justify-center w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm transition-all duration-200 text-white',
+                'flex items-center justify-center w-8 h-8 rounded-full transition-all duration-200 text-white hover:bg-white/15',
                 currentIndex === 0 ? 'opacity-0 pointer-events-none' : 'opacity-100',
               )}
             >
               <ChevronLeft size={14} />
             </button>
 
-            <span className="text-white/80 text-xs font-mono px-1">
+            <span className="text-white text-xs font-mono px-2 tabular-nums">
               {currentIndex + 1} / {totalCount}
             </span>
 
@@ -166,7 +166,7 @@ export default function ProjectModal({
               onClick={() => scrollToIndex(currentIndex + 1)}
               aria-label="Proyecto siguiente"
               className={cn(
-                'flex items-center justify-center w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm transition-all duration-200 text-white',
+                'flex items-center justify-center w-8 h-8 rounded-full transition-all duration-200 text-white hover:bg-white/15',
                 currentIndex === totalCount - 1 ? 'opacity-0 pointer-events-none' : 'opacity-100',
               )}
             >
